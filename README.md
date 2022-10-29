@@ -1,5 +1,9 @@
-Python-MTG
+Python-MTG-Effects
 ==========
+
+This is a framework for studying card effects in MTG and CCGs in general: How to reason about them, how to have engines resolve conflicts automatically, how to translate text effects into code, etc.
+
+All the below text is from the original mtg-python-engine repo that this code is based on:
 
 **Start the Game with `python -m MTG.game`**
 *Run tests with `./test.sh`*
