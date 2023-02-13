@@ -24,7 +24,7 @@ def runTest(command) -> None: # returns true if all tests passed
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     print(p.stdout.readlines()[-1].strip())
 
-def runFileAddition():
+def runFileAddition() -> None:
     m15 = open("m15_cards.txt", "a") # change to actual m15cards
     cc = open("cube_cards.txt", "a") # change to actual cube_cards
 
@@ -54,4 +54,4 @@ def runFileAddition():
 
 if __name__ == "__main__":
     runFileAddition()
-    runTest("bash ./test.sh")
+    runTest("bash ./test.sh") # tester
