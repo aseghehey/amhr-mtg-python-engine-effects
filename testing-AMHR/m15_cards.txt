@@ -433,10 +433,6 @@ Constricting Sliver
 
 
 ############################################################
-Heliod's Pilgrim
-
-
-############################################################
 Hushwing Gryff
 
 
@@ -685,7 +681,14 @@ Soul of Innistrad
 
 ############################################################
 Stab Wound
+	Aura:
+		Targets:
+			'creature'
+		self.subt_PT((2, 2))
 
+	Triggers:
+		onUpkeep
+			p.controller.lose_life(2)
 
 ############################################################
 Stain the Mind
@@ -935,6 +938,10 @@ Living Totem
 
 ############################################################
 Naturalize
+	Targets:
+		p.is_permanent
+					and (p.is_artifact or p.is_enchantment)
+	targets[0].destroy()
 
 
 ############################################################
@@ -1216,7 +1223,11 @@ Aegis Angel
 
 ############################################################
 Divine Verdict
-
+	Targets:
+		'creature'
+	targets[0].counter(source=self)
+			lambda p: p.status.is_attacking)
+			lambda p: p.status.is_blocking)
 
 ############################################################
 Inspired Charge
