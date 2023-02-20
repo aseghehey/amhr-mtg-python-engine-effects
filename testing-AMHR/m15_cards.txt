@@ -1137,44 +1137,77 @@ Tyrant's Machine
 Will-Forged Golem
 
 
-############################################################
+##############################
 Battlefield Forge
 
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
+		T: self.controller.mana.add(mana.Mana.RED, 1), self.controller.lose_life(1)
+		T: self.controller.mana.add(mana.Mana.WHITE, 1), self.controller.lose_life(1)
 
-############################################################
+##############################
 Caves of Koilos
 
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
+		T: self.controller.mana.add(mana.Mana.WHITE, 1), self.controller.lose_life(1)
+		T: self.controller.mana.add(mana.Mana.BLACK, 1), self.controller.lose_life(1)
 
-############################################################
+##############################
 Darksteel Citadel
 
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
 
-############################################################
+##############################
 Evolving Wilds
 
 
-############################################################
+
+##############################
 Llanowar Wastes
 
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
+		T: self.controller.mana.add(mana.Mana.BLACK, 1), self.controller.lose_life(1)
+		T: self.controller.mana.add(mana.Mana.GREEN, 1), self.controller.lose_life(1)
 
-############################################################
+##############################
 Radiant Fountain
 
+	Triggers:
+		onEtB
+			self.controller.gain_life(2)
 
-############################################################
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
+
+##############################
 Shivan Reef
 
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
+		T: self.controller.mana.add(mana.Mana.BLUE, 1), self.controller.lose_life(1)
+		T: self.controller.mana.add(mana.Mana.RED, 1), self.controller.lose_life(1)
 
-############################################################
+
+##############################
 Sliver Hive
 
 
-############################################################
+
+##############################
 Urborg, Tomb of Yawgmoth
 
 
-############################################################
+
+##############################
 Yavimaya Coast
+
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
+		T: self.controller.mana.add(mana.Mana.GREEN, 1), self.controller.lose_life(1)
+		T: self.controller.mana.add(mana.Mana.BLUE, 1), self.controller.lose_life(1)
 
 
 ############################################################
