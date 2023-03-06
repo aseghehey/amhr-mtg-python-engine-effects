@@ -438,3 +438,169 @@ Thoughtflare
 	self.controller.draw(4)
 	self.controller.discard(4)
 
+##############################
+Sacred Nectar
+
+	self.controller.gain_life(4)
+
+##############################
+Spring of Eternal Peace
+
+	self.controller.gain_life(8)
+
+##############################
+Chaplain's Blessing
+
+	self.controller.gain_life(5)
+
+##############################
+Rejuvenate
+
+	self.controller.gain_life(6)
+
+##############################
+Angel's Mercy
+
+	self.controller.gain_life(7)
+
+##############################
+Nourish
+
+	self.controller.gain_life(6)
+
+##############################
+Whitesun's Passage
+
+	self.controller.gain_life(5)
+
+##############################
+Meditation Puzzle
+
+	self.controller.gain_life(8)
+	
+##############################
+Moorland Inquisitor
+	
+	self.card.add_effect('gainAbility', 'First Strike', self, self.game.eot_time)
+
+##############################
+Reito Lantern
+	Targets:
+		p.zone_type == 'GRAVEYARD'
+	targets[0].change_zone(p.owner.library, -1, False)
+
+##############################
+Karplusan Wolverine
+	Targets:
+		'creature or player'
+	targets[0].take_damage(self, 1)
+
+##############################
+Elder Druid
+	Targets:
+		'creature or land or artifact'
+	[targets[0].untap() if targets[0].status.tapped else targets[0].tap()]
+
+##############################
+Songs of the Damned
+	[self.mana.add_str('B') for i in self.controller.graveyard if i.is_creature]
+
+##############################
+Cancel
+
+		Targets:
+				'spell'
+
+		targets[0].counter(source=self)
+
+
+##############################
+Naturalize
+
+		Targets:
+				p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+		targets[0].destroy()
+
+
+##############################
+Disenchant
+
+		Targets:
+				p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+		targets[0].destroy()
+
+
+##############################
+Counterspell
+
+		Targets:
+				'spell'
+
+		targets[0].counter(source=self)
+
+
+##############################
+Nature's Chant
+
+		Targets:
+				p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+		targets[0].destroy()
+
+
+##############################
+Sundering Vitae
+
+		Targets:
+				p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+		targets[0].destroy()
+
+
+##############################
+Mortify
+
+		Targets:
+				'creature'
+
+		targets[0].destroy()
+
+
+##############################
+Murder
+
+		Targets:
+				'creature'
+
+		targets[0].destroy()
+
+
+##############################
+Mob
+
+		Targets:
+				'creature'
+
+		targets[0].destroy()
+
+
+##############################
+Eviscerate
+
+		Targets:
+				'creature'
+
+		targets[0].destroy()
+
+
+##############################
+Impale
+
+		Targets:
+				'creature'
+
+		targets[0].destroy()
+
+

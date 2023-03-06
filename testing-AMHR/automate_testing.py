@@ -2,6 +2,8 @@ import json
 import os
 import subprocess
 
+# Incomplete
+
 def parseJson(filename_json) -> list:
     with open(filename_json) as json_file:
         cards = json.load(json_file)
@@ -13,6 +15,18 @@ def parseJson(filename_json) -> list:
         cards.add(card["name"])
     return cards
 
+def countCards():
+    with open("automation.txt", "r") as file:
+        i = 0
+        for card in file:
+            card = card.rstrip()
+            if not card:
+                continue
+            if card[0] in {'#','\t', ' '}:
+                continue
+            i += 1
+    return i
+
 def addCardsToFile(file_w, card) -> None: # given a filename, adds card to that file
     file_w.write("#"*30 + "\n")
     for c in card:
@@ -20,9 +34,10 @@ def addCardsToFile(file_w, card) -> None: # given a filename, adds card to that 
         file_w.write("\n")
     file_w.write("\n\n" + "#"*30)
 
-def runTest(command) -> None: # returns true if all tests passed
+def runTest(command) -> bool: # returns true if all tests passed
     p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-    print(p.stdout.readlines()[-1].strip())
+    res = p.stdout.readlines()[-1].strip()
+    return 'OK' in res
 
 def runFileAddition() -> None:
     m15 = open("m15_cards.txt", "a") # change to actual m15cards
@@ -52,6 +67,18 @@ def runFileAddition() -> None:
     m15.close()
     cc.close()
 
+def createDecks(): # create two decks opposite, test more cards
+    pass
+
 if __name__ == "__main__":
+    print(countCards())
+    '''
     runFileAddition()
-    runTest("bash ./test.sh") # tester
+    res_runTest = runTest("bash ./test.sh") # call ./test.sh for the game to parse it
+
+    #TODO
+    if not res_runTest:
+        print('no')
+
+    createDecks()
+    '''
