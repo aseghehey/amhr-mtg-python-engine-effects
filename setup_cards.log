@@ -129,10 +129,6 @@ add_play_func_with_targets("Negate", lambda self, targets, is_legal_target: [tar
 
 add_trigger("Forge Devil", triggers.triggerConditions['onEtB'], '[self.targets_chosen[0].take_damage(self, 1), self.controller.take_damage(self, 1)]', None, ['creature'], intervening_if=None)
 
-add_activated_ability("Yavimaya Coast", 'T', 'self.controller.mana.add(mana.Mana.COLORLESS, 1)', [])
-add_activated_ability("Yavimaya Coast", 'T', 'self.controller.mana.add(mana.Mana.GREEN, 1), self.controller.lose_life(1)', [])
-add_activated_ability("Yavimaya Coast", 'T', 'self.controller.mana.add(mana.Mana.BLUE, 1), self.controller.lose_life(1)', [])
-
 add_targets("Cancel", ['spell'], prompts=[])
 add_play_func_with_targets("Cancel", lambda self, targets, is_legal_target: [targets[0].counter(source=self)])
 

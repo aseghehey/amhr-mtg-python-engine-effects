@@ -328,7 +328,7 @@ Dauntless River Marshal
 	StaticEffects:
 		'self'
 			'modifyPT'
-			(1,1)
+			(1, 1)
 			lambda eff: eff.source.controller.controls(subtype="Island")
 
 
@@ -471,6 +471,10 @@ Spirit Bonds
 ############################################################
 Amphin Pathmage
 
+#	Abilities:
+#		2U: self.targets_chosen[0].add_effect("gainAbility", "Unblockable", self, self.game.eot_time)
+#			Targets:
+#				p.is_permanent and p.is_creature
 
 ############################################################
 Chief Engineer
@@ -489,6 +493,10 @@ Dissipate
 ############################################################
 Encrust
 
+	Aura:
+		Targets:
+			'creature' or 'artifact
+		loses abilites and cant untap
 
 ############################################################
 Ensoul Artifact
@@ -547,6 +555,17 @@ Negate
 
 ############################################################
 Quickling
+
+#	Triggers:
+#		onEtB
+#			self.controller.search_lib(lambda c: c.is_aura) if self.controller.make_choice(
+#							"Sacrifice Quickling unless you return another permanent you control to its owner's hand\n")
+#																else None
+#
+#				Prompt:
+#					Return another permanent you control to its owner's hand\n
+#				p.is_permanent and p.controller is self.controller
+#			target[0].change_zone(self.controller.hand)
 
 
 ############################################################
@@ -620,21 +639,23 @@ Festergloom
 ############################################################
 Flesh to Dust
 
-	Targets:
-		'enchantment'
-	targets[0].destroy()
+#	Targets:
+#		'creature'
+#	targets[0].destroy()
+
 
 ############################################################
 Gravedigger
 
-	Triggers:
-		onEtB
-			self.controller.search_grave(lambda c: c.is_aura) if self.controller.make_choice
-			Targets:
-				p.is_creature and p.graveyard
-			target[0].change_zone(self.controller.hand) if self.controller.make_choice(
-					"Would you like return %r from your graveyard to your hand?" % target.card)
-														else None
+#	Triggers:
+#		onEtB
+#			self.controller.search_grave(lambda c: c.is_aura) if self.controller.make_choice
+#			Targets:
+#				p.is_creature and p.graveyard
+#			target[0].change_zone(self.controller.hand) if self.controller.make_choice(
+#					"Would you like return %r from your graveyard to your hand?" % target.card)
+#														else None
+
 
 ############################################################
 In Garruk's Wake
@@ -835,7 +856,9 @@ Kurkesh, Onakke Ancient
 
 ############################################################
 Lava Axe
-
+	Targets:
+		'player or planeswalkers'
+	targets[0].take_damage(self, 5)
 
 ############################################################
 Might Makes Right
@@ -843,7 +866,9 @@ Might Makes Right
 
 ############################################################
 Miner's Bane
-
+	Abilities:
+		2R: self.card.add_effect('modifyPT', (1, 0), self, self.game.eot_time),
+			self.card.add_effect('gainAbility', 'Trample', self, self.game.eot_time)
 
 ############################################################
 Paragon of Fierce Defiance
@@ -852,10 +877,20 @@ Paragon of Fierce Defiance
 ############################################################
 Rummaging Goblin
 
+	Abilities:
+		T self.controller.discard(1): self.controller.draw(1)
 
 ############################################################
 Scrapyard Mongrel
-
+	StaticEffects:
+		'self'
+			'modifyPT'
+			(1, 0)
+			lambda eff: eff.source.controller.controls(types="Artifact")
+		'self'
+			'gainAbility'
+			'Trample'
+			lambda eff: eff.source.controller.controls(types="Artifact")
 
 ############################################################
 Shrapnel Blast
@@ -871,18 +906,23 @@ Soul of Shandalar
 
 ############################################################
 Stoke the Flames
-
+	Targets:
+		'creature or player'
+	targets[0].take_damage(self, 4)
 
 ############################################################
 Torch Fiend
-
+	Abilities:
+		R Sacrifice:
+			Targets:
+				p.is_permanent and p.is_artifact
+				targets[0].destroy()
 
 ############################################################
 Wall of Fire
 
 	Abilities:
 		R: self.card.add_effect('modifyPT', (1, 0), self, self.game.eot_time)
-
 
 ############################################################
 Ancient Silverback
@@ -920,7 +960,9 @@ Feral Incarnation
 
 ############################################################
 Gather Courage
-
+	Targets:
+		'creature'
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
 
 ############################################################
 Genesis Hydra
@@ -936,6 +978,9 @@ Hornet Queen
 
 ############################################################
 Hunt the Weak
+#	Targets:
+#		p.is_creature and p.controller is self.controller
+#	targets[0].add_counter("+1/+1")
 
 
 ############################################################
@@ -972,7 +1017,6 @@ Naturalize
 					and (p.is_artifact or p.is_enchantment)
 	targets[0].destroy()
 
-
 ############################################################
 Netcaster Spider
 
@@ -983,11 +1027,17 @@ Nissa, Worldwaker
 
 ############################################################
 Nissa's Expedition
-
+#	Triggers:
+#		onEtB
+#			self.controller.search_lib(lambda c: c.is_basic_land) if self.controller.make_choice(
+#							"Would you like to search your library for an aura?")
+#																else None
 
 ############################################################
 Overwhelm
-
+	self.game.apply_to_battlefield(
+						lambda p: p.add_effect('modifyPT', (3, 3), self, self.game.eot_time),
+						lambda p: p.is_creature and and p.controller is self.controller)
 
 ############################################################
 Paragon of Eternal Wilds
@@ -999,15 +1049,24 @@ Phytotitan
 
 ############################################################
 Plummet
-
+	Targets:
+		p.is_creature and p.has_ability('Flying)
+	targets[0].destroy()
 
 ############################################################
 Ranger's Guile
-
+	Targets:
+		'creature'
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time),
+	targets[0].add_effect("gainAbility", "Hexproof", self, self.game.eot_time)
 
 ############################################################
 Reclamation Sage
-
+	Triggers:
+		onEtB
+		Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+		targets[0].destroy()
 
 ############################################################
 Restock
@@ -1024,6 +1083,9 @@ Satyr Wayfinder
 ############################################################
 Shaman of Spring
 
+	Triggers:
+	onEtB
+		self.controller.draw(1)
 
 ############################################################
 Siege Wurm
@@ -1035,7 +1097,16 @@ Soul of Zendikar
 
 ############################################################
 Sunblade Elf
+	StaticEffects:
+		'self'
+			'modifyPT',
+			(1, 0)
+			lambda eff: eff.source.controller.controls(LandType="Plains")
 
+	Abilities:
+		4W: self.game.apply_to_battlefield(
+			lambda p: p.add_effect('modifyPT', (1, 1), self, self.game.eot_time),
+			lambda p: p.is_creature and and p.controller is self.controller)
 
 ############################################################
 Undergrowth Scavenger
@@ -1104,6 +1175,14 @@ Juggernaut
 ############################################################
 Meteorite
 
+	Triggers:
+		onEtB
+		Targets:
+			'creature or player'
+		targets[0].take_damage(self, 2)
+
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
 
 ############################################################
 Obelisk of Urd
@@ -1112,6 +1191,11 @@ Obelisk of Urd
 ############################################################
 Perilous Vault
 
+	Abilities:
+		5, T, exile:
+				self.game.apply_to_battlefield(
+						lambda p: p.exile(),
+						lambda p: not p.is_land)
 
 ############################################################
 Phyrexian Revoker
@@ -1119,7 +1203,8 @@ Phyrexian Revoker
 
 ############################################################
 Profane Memento
-
+#	triggers:
+#		onEnterGrave
 
 ############################################################
 Rogue's Gloves
@@ -1128,6 +1213,10 @@ Rogue's Gloves
 ############################################################
 Sacred Armory
 
+	Abilities:
+		Targets:
+			'creature'
+		targets[0].add_effect('modifyPT', (1, 0), self, self.game.eot_time)
 
 ############################################################
 Scuttling Doom Engine
@@ -1198,10 +1287,10 @@ Darksteel Citadel
 ##############################
 Evolving Wilds
 
-	Abilities:
-		T Sacrifice: self.controller.search_lib(lambda c: c.is_land) if self.controller.make_choice(
-							"Would you like to search your library for a land?")
-																else None
+#	Abilities:
+#		T Sacrifice: self.controller.search_lib(lambda c: c.is_land) if self.controller.make_choice(
+#							"Would you like to search your library for a land?")
+#																else None
 
 ##############################
 Llanowar Wastes
