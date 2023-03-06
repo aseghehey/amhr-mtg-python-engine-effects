@@ -43,7 +43,6 @@ Ray of Revelation
 	Abilities:
 		G: self.card.exile() # not sure if we should use that
 
-
 ############################################################
 Putrid Leech
 	Abilities:

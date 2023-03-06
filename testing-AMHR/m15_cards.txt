@@ -620,10 +620,21 @@ Festergloom
 ############################################################
 Flesh to Dust
 
+	Targets:
+		'enchantment'
+	targets[0].destroy()
 
 ############################################################
 Gravedigger
 
+	Triggers:
+		onEtB
+			self.controller.search_grave(lambda c: c.is_aura) if self.controller.make_choice
+			Targets:
+				p.is_creature and p.graveyard
+			target[0].change_zone(self.controller.hand) if self.controller.make_choice(
+					"Would you like return %r from your graveyard to your hand?" % target.card)
+														else None
 
 ############################################################
 In Garruk's Wake
@@ -869,6 +880,9 @@ Torch Fiend
 ############################################################
 Wall of Fire
 
+	Abilities:
+		R: self.card.add_effect('modifyPT', (1, 0), self, self.game.eot_time)
+
 
 ############################################################
 Ancient Silverback
@@ -877,6 +891,9 @@ Ancient Silverback
 ############################################################
 Back to Nature
 
+	self.game.apply_to_battlefield(
+						lambda p: p.destroy(),
+						lambda p: p.is_enchantment
 
 ############################################################
 Carnivorous Moss-Beast
@@ -893,10 +910,13 @@ Chord of Calling
 ############################################################
 Elvish Mystic
 
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.GREEN, 1)
 
 ############################################################
 Feral Incarnation
 
+	self.controller.create_token('3/3 green Beast', 3)
 
 ############################################################
 Gather Courage
@@ -925,6 +945,13 @@ Hunter's Ambush
 ############################################################
 Invasive Species
 
+	Triggers:
+		onEtB
+			Targets:
+				Prompt:
+					Return another permanent you control to its owner's hand\n
+				p.is_permanent and p.controller is self.controller
+			target[0].change_zone(self.controller.hand)
 
 ############################################################
 Kalonian Twingrove
@@ -1171,7 +1198,10 @@ Darksteel Citadel
 ##############################
 Evolving Wilds
 
-
+	Abilities:
+		T Sacrifice: self.controller.search_lib(lambda c: c.is_land) if self.controller.make_choice(
+							"Would you like to search your library for a land?")
+																else None
 
 ##############################
 Llanowar Wastes
