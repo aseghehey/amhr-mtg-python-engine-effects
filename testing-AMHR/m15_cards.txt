@@ -482,7 +482,9 @@ Diffusion Sliver
 
 ############################################################
 Dissipate
-
+	Targets:
+		'spell'
+	targets[0].counter(source=self)
 
 ############################################################
 Encrust
