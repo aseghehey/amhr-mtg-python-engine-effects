@@ -68,6 +68,7 @@ def runFileAddition() -> None:
                 lines.append(line)
     m15.close()
     cc.close()
+    return appended_cards
 
 ''' 
 #WIP
@@ -84,10 +85,24 @@ def createDecks(deck_quantity, cards, size):
         file.close()
 ''' 
 
+def createDecks(deck_num, size, cards) -> set:
+    files = [open(f'../../data/decks/deck{i + 1}.txt', 'w') for i in range(deck_num)]
+    cards_in_decks = set()
+    for file in files:
+        for i in range(size):
+            card = random.choice(cards)
+            file.write(f'{random.randint(1,10)} {card}')
+            if i + 1 == size: continue
+            file.write("\n")
+            cards_in_decks.add(card)
+        file.close()
+    return cards_in_decks
+
 if __name__ == "__main__":
     # print(countCards())
     
     cards = runFileAddition()
+    createDecks(4, 10, cards)
     # res_runTest = runMTGTests("cd ~/Development/mtg-python-engine-effects/; ./test.sh") # call ./test.sh for the game to parse it
 
     # if res_runTest:
