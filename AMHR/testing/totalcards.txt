@@ -101,7 +101,7 @@ Root Spider
 Eternal Witness
 
 	Targets:
-		p.zone_type is 'GRAVEYARD'
+		p.zone_type == 'GRAVEYARD'
 			Prompt:
 				Choose target card from graveyard\n
 	target[0].change_zone(self.controller.hand)
@@ -120,7 +120,7 @@ Ray of Revelation
 ##############################
 Shock
 	Targets:
-			'creature or player'
+		'creature or player'
 
 	targets[0].take_damage(self, 2)
 

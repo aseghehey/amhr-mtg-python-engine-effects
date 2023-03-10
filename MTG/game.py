@@ -158,7 +158,7 @@ class Game(object):
             #       UNTIL none avaliable
             self.apply_state_based_actions()
 
-
+            # print(self.APNAP)
             for p in self.APNAP:
                 if p.pending_triggers:
                     # ask player for order
@@ -225,6 +225,7 @@ class Game(object):
                     self.stack.add(_play)  # add to stack
 
     def handle_beginning_phase(self, step):
+        print("in beginning phase")
         if step is gamesteps.Step.UNTAP:
             self.apply_to_battlefield(lambda p: p.untap(),
                                       lambda p: p.controller is self.current_player)
@@ -492,6 +493,7 @@ class Game(object):
 
         while self.pending_steps:
             self.step = self.pending_steps.pop(0)
+            print(self.pending_steps)
             print(self.step)
             {
                 gamesteps.Step.UNTAP: self.handle_beginning_phase,
