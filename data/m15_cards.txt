@@ -650,13 +650,6 @@ Constricting Sliver
 
 
 ##############################
-
-
-Heliod's Pilgrim
-
-
-
-##############################
 Hushwing Gryff
 
 
@@ -672,20 +665,9 @@ Oppressive Rays
 
 
 
-##############################
-Preeminent Captain
-
-
-
-
-
 
 ##############################
 Return to the Ranks
-
-
-
-
 
 
 ##############################
@@ -720,8 +702,6 @@ Amphin Pathmage
 
 
 ##############################
-
-
 Chief Engineer
 
 
@@ -731,17 +711,12 @@ Diffusion Sliver
 
 
 
-
-
-
 ##############################
 Dissipate
 
 
 
 ##############################
-
-
 Encrust
 
 
@@ -752,13 +727,6 @@ Ensoul Artifact
 
 
 ##############################
-Frost Lynx
-
-
-
-##############################
-
-
 Glacial Crasher
 
 
@@ -819,7 +787,6 @@ Negate
 
 	Targets:
 		'instant or sorcery spell'
-
 	targets[0].counter(source=self)
 
 
@@ -1009,8 +976,14 @@ Soul of Innistrad
 
 ##############################
 Stab Wound
+	Aura:
+		Targets:
+			'creature'
+		self.subt_PT((2, 2))
 
-
+	Triggers:
+		onUpkeep
+			p.controller.lose_life(2)
 
 ##############################
 Stain the Mind
@@ -1176,32 +1149,41 @@ Kurkesh, Onakke Ancient
 
 ##############################
 Lava Axe
+	Targets:
+		'player or planeswalkers'
+	targets[0].take_damage(self, 5)
 
-
-
-##############################
+############################################################
 Might Makes Right
 
 
-
-##############################
+############################################################
 Miner's Bane
+	Abilities:
+		2R: self.card.add_effect('modifyPT', (1, 0), self, self.game.eot_time),
+			self.card.add_effect('gainAbility', 'Trample', self, self.game.eot_time)
 
-
-
-##############################
+############################################################
 Paragon of Fierce Defiance
 
 
-
-##############################
+############################################################
 Rummaging Goblin
 
+	Abilities:
+		T self.controller.discard(1): self.controller.draw(1)
 
-
-##############################
+############################################################
 Scrapyard Mongrel
-
+	StaticEffects:
+		'self'
+			'modifyPT'
+			(1, 0)
+			lambda eff: eff.source.controller.controls(types="Artifact")
+		'self'
+			'gainAbility'
+			'Trample'
+			lambda eff: eff.source.controller.controls(types="Artifact")
 
 
 ##############################
@@ -1221,27 +1203,34 @@ Soul of Shandalar
 
 ##############################
 Stoke the Flames
+	Targets:
+		'creature or player'
+	targets[0].take_damage(self, 4)
 
-
-
-##############################
+############################################################
 Torch Fiend
+	Abilities:
+		R Sacrifice:
+			Targets:
+				p.is_permanent and p.is_artifact
+				targets[0].destroy()
 
-
-
-##############################
+############################################################
 Wall of Fire
 
+	Abilities:
+		R: self.card.add_effect('modifyPT', (1, 0), self, self.game.eot_time)
 
-
-##############################
+############################################################
 Ancient Silverback
 
 
-
-##############################
+############################################################
 Back to Nature
 
+	self.game.apply_to_battlefield(
+						lambda p: p.destroy(),
+						lambda p: p.is_enchantment())
 
 
 ##############################
@@ -1262,17 +1251,19 @@ Chord of Calling
 ##############################
 Elvish Mystic
 
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.GREEN, 1)
 
-
-##############################
+############################################################
 Feral Incarnation
 
-
+	self.controller.create_token('3/3 green Beast', 3)
 
 ##############################
 Gather Courage
-
-
+	Targets:
+		'creature'
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
 
 ##############################
 Genesis Hydra
@@ -1302,6 +1293,13 @@ Hunter's Ambush
 ##############################
 Invasive Species
 
+	Triggers:
+		onEtB
+			Targets:
+				Prompt:
+					Return another permanent you control to its owner's hand\n
+				p.is_permanent and p.controller is self.controller
+			target[0].change_zone(self.controller.hand)
 
 
 ##############################
@@ -1321,8 +1319,10 @@ Living Totem
 
 ##############################
 Naturalize
-
-
+	Targets:
+		p.is_permanent
+					and (p.is_artifact or p.is_enchantment)
+	targets[0].destroy()
 
 ##############################
 Netcaster Spider
@@ -1341,8 +1341,9 @@ Nissa's Expedition
 
 ##############################
 Overwhelm
-
-
+	self.game.apply_to_battlefield(
+						lambda p: p.add_effect('modifyPT', (3, 3), self, self.game.eot_time),
+						lambda p: p.is_creature and p.controller is self.controller)
 
 ##############################
 Paragon of Eternal Wilds
@@ -1356,18 +1357,24 @@ Phytotitan
 
 ##############################
 Plummet
+	Targets:
+		p.is_creature and p.has_ability('Flying')
+	targets[0].destroy()
 
-
-
-##############################
+############################################################
 Ranger's Guile
+	Targets:
+		'creature'
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+	targets[0].add_effect("gainAbility", "Hexproof", self, self.game.eot_time)
 
-
-
-##############################
+############################################################
 Reclamation Sage
-
-
+	Triggers:
+		onEtB
+			Targets:
+				p.is_permanent and (p.is_artifact or p.is_enchantment)
+			targets[0].destroy()
 
 ##############################
 Restock
@@ -1387,6 +1394,9 @@ Satyr Wayfinder
 ##############################
 Shaman of Spring
 
+	Triggers:
+		onEtB
+			self.controller.draw(1)
 
 
 ##############################
@@ -1401,6 +1411,16 @@ Soul of Zendikar
 
 ##############################
 Sunblade Elf
+	StaticEffects:
+		'self'
+			'modifyPT'
+			(1, 0)
+			lambda eff: eff.source.controller.controls(LandType="Plains")
+
+	Abilities:
+		4W: self.game.apply_to_battlefield(
+			lambda p: p.add_effect('modifyPT', (1, 1), self, self.game.eot_time),
+			lambda p: p.is_creature and and p.controller is self.controller)
 
 
 
@@ -1487,6 +1507,15 @@ Juggernaut
 ##############################
 Meteorite
 
+	Triggers:
+		onEtB
+			Targets:
+				'creature or player'
+			targets[0].take_damage(self, 2)
+
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
+
 
 
 ##############################
@@ -1497,6 +1526,11 @@ Obelisk of Urd
 ##############################
 Perilous Vault
 
+	Abilities:
+		5, T, exile:
+				self.game.apply_to_battlefield(
+						lambda p: p.exile(),
+						lambda p: not p.is_land)
 
 
 ##############################
@@ -1514,12 +1548,15 @@ Rogue's Gloves
 
 
 
-##############################
+############################################################
 Sacred Armory
 
+	Abilities:
+		Targets:
+			'creature'
+		2: targets[0].add_effect('modifyPT', (1, 0), self, self.game.eot_time)
 
-
-##############################
+############################################################
 Scuttling Doom Engine
 
 
@@ -1577,17 +1614,24 @@ Will-Forged Golem
 ##############################
 Battlefield Forge
 
-
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
+		T: self.controller.mana.add(mana.Mana.RED, 1), self.controller.lose_life(1)
+		T: self.controller.mana.add(mana.Mana.WHITE, 1), self.controller.lose_life(1)
 
 ##############################
 Caves of Koilos
 
-
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
+		T: self.controller.mana.add(mana.Mana.WHITE, 1), self.controller.lose_life(1)
+		T: self.controller.mana.add(mana.Mana.BLACK, 1), self.controller.lose_life(1)
 
 ##############################
 Darksteel Citadel
 
-
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
 
 ##############################
 Evolving Wilds
@@ -1597,16 +1641,28 @@ Evolving Wilds
 ##############################
 Llanowar Wastes
 
-
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
+		T: self.controller.mana.add(mana.Mana.BLACK, 1), self.controller.lose_life(1)
+		T: self.controller.mana.add(mana.Mana.GREEN, 1), self.controller.lose_life(1)
 
 ##############################
 Radiant Fountain
 
+	Triggers:
+		onEtB
+			self.controller.gain_life(2)
 
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
 
 ##############################
 Shivan Reef
 
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
+		T: self.controller.mana.add(mana.Mana.BLUE, 1), self.controller.lose_life(1)
+		T: self.controller.mana.add(mana.Mana.RED, 1), self.controller.lose_life(1)
 
 
 ##############################
@@ -1622,67 +1678,63 @@ Urborg, Tomb of Yawgmoth
 ##############################
 Yavimaya Coast
 
+	Abilities:
+		T: self.controller.mana.add(mana.Mana.COLORLESS, 1)
+		T: self.controller.mana.add(mana.Mana.GREEN, 1), self.controller.lose_life(1)
+		T: self.controller.mana.add(mana.Mana.BLUE, 1), self.controller.lose_life(1)
 
 
-##############################
+############################################################
 Aegis Angel
 
 
-
-##############################
+############################################################
 Divine Verdict
+	Targets:
+		'creature'
+	targets[0].counter(source=self)
+		lambda p: p.status.is_attacking()
+		lambda p: p.status.is_blocking()
 
-
-
-##############################
+############################################################
 Inspired Charge
 
 
-
-##############################
+############################################################
 Cancel
-
 	Targets:
 		'spell'
-
 	targets[0].counter(source=self)
 
 
-##############################
+############################################################
 Nightmare
 
 
-
-##############################
+############################################################
 Sengir Vampire
 
 
-
-##############################
+############################################################
 Furnace Whelp
-
 	Abilities:
 		R: self.card.add_effect('modifyPT', (1, 0), self, self.game.eot_time)
 
 
-##############################
+############################################################
 Seismic Strike
 
 
-
-##############################
+############################################################
 Shivan Dragon
 
 
-
-##############################
+############################################################
 Garruk's Packleader
 
 
-
-##############################
+############################################################
 Terra Stomper
-
 
 
 ##############################

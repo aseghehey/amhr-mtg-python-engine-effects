@@ -127,7 +127,92 @@ add_trigger("Black Cat", triggers.triggerConditions['onDeath'], '[self.targets_c
 add_targets("Negate", ['instant or sorcery spell'], prompts=[])
 add_play_func_with_targets("Negate", lambda self, targets, is_legal_target: [targets[0].counter(source=self)])
 
+add_trigger("Stab Wound", triggers.triggerConditions['onUpkeep'], '[p.controller.lose_life(2)]', None, [], intervening_if=None)
+add_aura_effect("Stab Wound", '[self.subt_PT((2, 2))]', ['creature'])
+
 add_trigger("Forge Devil", triggers.triggerConditions['onEtB'], '[self.targets_chosen[0].take_damage(self, 1), self.controller.take_damage(self, 1)]', None, ['creature'], intervening_if=None)
+
+add_targets("Lava Axe", ['player or planeswalkers'], prompts=[])
+add_play_func_with_targets("Lava Axe", lambda self, targets, is_legal_target: [targets[0].take_damage(self, 5)])
+
+add_activated_ability("Miner's Bane", '2R', "self.card.add_effect('modifyPT', (1, 0), self, self.game.eot_time),", [])
+
+add_activated_ability("Rummaging Goblin", 'T self.controller.discard(1)', 'self.controller.draw(1)', [])
+
+add_static_effect("Scrapyard Mongrel", 'self', 'modifyPT', (1, 0), lambda eff: eff.source.controller.controls(types="Artifact"))
+add_static_effect("Scrapyard Mongrel", 'self', 'gainAbility', 'Trample', lambda eff: eff.source.controller.controls(types="Artifact"))
+
+add_targets("Stoke the Flames", ['creature or player'], prompts=[])
+add_play_func_with_targets("Stoke the Flames", lambda self, targets, is_legal_target: [targets[0].take_damage(self, 4)])
+
+add_activated_ability("Torch Fiend", 'R Sacrifice', '', [lambda self, p: p.is_permanent and p.is_artifact, lambda self, p: targets[0].destroy()])
+
+add_activated_ability("Wall of Fire", 'R', "self.card.add_effect('modifyPT', (1, 0), self, self.game.eot_time)", [])
+
+add_play_func_no_target("Back to Nature", lambda self: [self.game.apply_to_battlefield( lambda p: p.destroy(), lambda p: p.is_enchantment())])
+
+add_activated_ability("Elvish Mystic", 'T', 'self.controller.mana.add(mana.Mana.GREEN, 1)', [])
+
+add_play_func_no_target("Feral Incarnation", lambda self: [self.controller.create_token('3/3 green Beast', 3)])
+
+add_targets("Gather Courage", ['creature'], prompts=[])
+add_play_func_with_targets("Gather Courage", lambda self, targets, is_legal_target: [targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)])
+
+add_trigger("Invasive Species", triggers.triggerConditions['onEtB'], '[Targets:, target[0].change_zone(self.controller.hand)]', None, [], intervening_if=None)
+
+add_targets("Naturalize", [lambda self, p: p.is_permanent and (p.is_artifact or p.is_enchantment)], prompts=[])
+add_play_func_with_targets("Naturalize", lambda self, targets, is_legal_target: [targets[0].destroy()])
+
+add_play_func_no_target("Overwhelm", lambda self: [self.game.apply_to_battlefield( lambda p: p.add_effect('modifyPT', (3, 3), self, self.game.eot_time), lambda p: p.is_creature and p.controller is self.controller)])
+
+add_targets("Plummet", [lambda self, p: p.is_creature and p.has_ability('Flying')], prompts=[])
+add_play_func_with_targets("Plummet", lambda self, targets, is_legal_target: [targets[0].destroy()])
+
+add_targets("Ranger's Guile", ['creature'], prompts=[])
+add_play_func_with_targets("Ranger's Guile", lambda self, targets, is_legal_target: [targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time), targets[0].add_effect("gainAbility", "Hexproof", self, self.game.eot_time)])
+
+add_trigger("Reclamation Sage", triggers.triggerConditions['onEtB'], '[Targets:, targets[0].destroy()]', None, [], intervening_if=None)
+
+add_trigger("Shaman of Spring", triggers.triggerConditions['onEtB'], '[self.controller.draw(1)]', None, [], intervening_if=None)
+
+add_activated_ability("Sunblade Elf", '4W', 'self.game.apply_to_battlefield(', [])
+add_static_effect("Sunblade Elf", 'self', 'modifyPT', (1, 0), lambda eff: eff.source.controller.controls(LandType="Plains"))
+
+add_activated_ability("Meteorite", 'T', 'self.controller.mana.add(mana.Mana.COLORLESS, 1)', [])
+add_trigger("Meteorite", triggers.triggerConditions['onEtB'], '[Targets:, targets[0].take_damage(self, 2)]', None, [], intervening_if=None)
+
+add_activated_ability("Perilous Vault", '5, T, exile', 'self.game.apply_to_battlefield( lambda p: p.exile(), lambda p: not p.is_land)', [])
+
+add_activated_ability("Sacred Armory", 'Targets', '', [])
+add_activated_ability("Sacred Armory", '2', "targets[0].add_effect('modifyPT', (1, 0), self, self.game.eot_time)", [])
+
+add_activated_ability("Battlefield Forge", 'T', 'self.controller.mana.add(mana.Mana.COLORLESS, 1)', [])
+add_activated_ability("Battlefield Forge", 'T', 'self.controller.mana.add(mana.Mana.RED, 1), self.controller.lose_life(1)', [])
+add_activated_ability("Battlefield Forge", 'T', 'self.controller.mana.add(mana.Mana.WHITE, 1), self.controller.lose_life(1)', [])
+
+add_activated_ability("Caves of Koilos", 'T', 'self.controller.mana.add(mana.Mana.COLORLESS, 1)', [])
+add_activated_ability("Caves of Koilos", 'T', 'self.controller.mana.add(mana.Mana.WHITE, 1), self.controller.lose_life(1)', [])
+add_activated_ability("Caves of Koilos", 'T', 'self.controller.mana.add(mana.Mana.BLACK, 1), self.controller.lose_life(1)', [])
+
+add_activated_ability("Darksteel Citadel", 'T', 'self.controller.mana.add(mana.Mana.COLORLESS, 1)', [])
+
+add_activated_ability("Llanowar Wastes", 'T', 'self.controller.mana.add(mana.Mana.COLORLESS, 1)', [])
+add_activated_ability("Llanowar Wastes", 'T', 'self.controller.mana.add(mana.Mana.BLACK, 1), self.controller.lose_life(1)', [])
+add_activated_ability("Llanowar Wastes", 'T', 'self.controller.mana.add(mana.Mana.GREEN, 1), self.controller.lose_life(1)', [])
+
+add_activated_ability("Radiant Fountain", 'T', 'self.controller.mana.add(mana.Mana.COLORLESS, 1)', [])
+add_trigger("Radiant Fountain", triggers.triggerConditions['onEtB'], '[self.controller.gain_life(2)]', None, [], intervening_if=None)
+
+add_activated_ability("Shivan Reef", 'T', 'self.controller.mana.add(mana.Mana.COLORLESS, 1)', [])
+add_activated_ability("Shivan Reef", 'T', 'self.controller.mana.add(mana.Mana.BLUE, 1), self.controller.lose_life(1)', [])
+add_activated_ability("Shivan Reef", 'T', 'self.controller.mana.add(mana.Mana.RED, 1), self.controller.lose_life(1)', [])
+
+add_activated_ability("Yavimaya Coast", 'T', 'self.controller.mana.add(mana.Mana.COLORLESS, 1)', [])
+add_activated_ability("Yavimaya Coast", 'T', 'self.controller.mana.add(mana.Mana.GREEN, 1), self.controller.lose_life(1)', [])
+add_activated_ability("Yavimaya Coast", 'T', 'self.controller.mana.add(mana.Mana.BLUE, 1), self.controller.lose_life(1)', [])
+
+add_targets("Divine Verdict", ['creature'], prompts=[])
+add_play_func_with_targets("Divine Verdict", lambda self, targets, is_legal_target: [targets[0].counter(source=self), lambda p: p.status.is_attacking(), lambda p: p.status.is_blocking()])
 
 add_targets("Cancel", ['spell'], prompts=[])
 add_play_func_with_targets("Cancel", lambda self, targets, is_legal_target: [targets[0].counter(source=self)])
