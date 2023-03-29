@@ -565,8 +565,17 @@ class Game(object):
 
 def start_game():
     cards.setup_cards()
-    decks = [cards.read_deck('data/decks/deck1.txt'),
-             cards.read_deck('data/decks/deck1.txt')]
+    # So that it can handle when we add multiple decks
+    deck_path = "data/decks"
+    deck_files = os.listdir(deck_path)
+    decks = []
+    for deck in deck_files:
+        decks.append(cards.read_deck(f"{deck_path}/{deck}"))
+
+    if len(decks) == 1:
+        # if only one deck available, make two instances of the game by creating it again for the other player
+        decks.append(decks[0])
+        
     GAME = Game(decks)
     GAME_PREVIOUS_STATE = None
     GAME.run_game()
