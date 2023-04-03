@@ -14,10 +14,6 @@ class Mana(Enum):
     COLORLESS = 5
     GENERIC = 6
 
-
-
-
-
 def str_to_mana_dict(manacost):
     cost = defaultdict(lambda: 0)
     for c in manacost:
@@ -27,7 +23,6 @@ def str_to_mana_dict(manacost):
     if num:
         cost[Mana.GENERIC] = int(num.group(0))
     return cost
-
 
 def chr_to_mana(c):
     assert c in manachr
@@ -46,26 +41,22 @@ def chr_to_mana(c):
     if c == '1':
         return Mana.GENERIC
 
-
-
 class ManaPool():
 
     def __init__(self, controller=None):
         self.pool = defaultdict(lambda: 0)
         self.controller = controller
 
-    def add(self, mana, amount=1):
-        if isinstance(mana, str):
-            self.add_str(mana)
-            return
+    def add(self, mana, amount):
+        
+        # if len(mana) > 1:
+        #     self.add_str(mana)
+        # else:
+        self.pool[chr_to_mana(mana)] += amount
 
-        self.pool[mana] += amount
-
-    def add_str(self, mana_str):
-        for c in mana_str:
-            self.add(chr_to_mana(c))
-
-
+    # def add_str(self, mana_str):
+    #     for c in mana_str:
+    #         self.add(chr_to_mana(c), 1)
 
     def pay(self, manacost):
         if manacost is None:
@@ -144,12 +135,13 @@ class ManaPool():
                 for mana in Mana:
                     if genericMana == 0:
                         break
-                    if self.pool[mana] > manacost[mana]:
+                    if self.pool[mana] >= manacost[mana]:
                         amount = min(self.pool[mana] - manacost[mana], genericMana)
                         manacost[mana] += amount
                         genericMana -= amount
 
         manacost[Mana.GENERIC] = genericMana
+        
         if genericMana > 0:
             return False
 
