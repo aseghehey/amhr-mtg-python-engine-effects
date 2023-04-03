@@ -24,22 +24,21 @@ def str_to_mana_dict(manacost):
         cost[Mana.GENERIC] = int(num.group(0))
     return cost
 
+mana_char_to_enum = {
+    'W': Mana.WHITE,
+    'U': Mana.BLUE,
+    'B': Mana.BLACK,
+    'R': Mana.RED,
+    'G': Mana.GREEN,
+    'C': Mana.COLORLESS,
+    '1': Mana.GENERIC
+}
+
 def chr_to_mana(c):
-    assert c in manachr
-    if c == 'W':
-        return Mana.WHITE
-    if c == 'U':
-        return Mana.BLUE
-    if c == 'B':
-        return Mana.BLACK
-    if c == 'R':
-        return Mana.RED
-    if c == 'G':
-        return Mana.GREEN
-    if c == 'C':
-        return Mana.COLORLESS
-    if c == '1':
-        return Mana.GENERIC
+    if not c or c not in mana_char_to_enum:
+        return None
+    
+    return mana_char_to_enum[c]
 
 class ManaPool():
 
@@ -53,26 +52,45 @@ class ManaPool():
         #     self.add_str(mana)
         # else:
         self.pool[chr_to_mana(mana)] += amount
+    def canPay(self, cost_str):
+        if not cost_str:
+            return False
 
-    # def add_str(self, mana_str):
-    #     for c in mana_str:
-    #         self.add(chr_to_mana(c), 1)
+        cost = str_to_mana_dict(cost_str)
+        if not cost:
+            return False
 
-    def pay(self, manacost):
-        if manacost is None:
-            return
+        remaining_pool = self.pool.copy()
 
-        for manatype in manacost:
-            assert self.pool[manatype] >= manacost[manatype]
-        for manatype in manacost:
-            self.pool[manatype] -= manacost[manatype]
+        # First, try to pay generic mana cost using any available mana
+        generic_mana = cost[Mana.GENERIC]
+        if generic_mana > 0:
+            for mana_type in Mana:
+                if mana_type != Mana.GENERIC:
+                    available_mana = remaining_pool[mana_type]
+                    paid_mana = min(available_mana, generic_mana)
+                    remaining_pool[mana_type] -= paid_mana
+                    generic_mana -= paid_mana
+                    if generic_mana == 0:
+                        break
+
+            if generic_mana > 0:
+                return False
+
+        # Next, try to pay specific mana costs
+        for mana_type, cost_amount in cost.items():
+            if mana_type != Mana.GENERIC:
+                remaining_pool[mana_type] -= cost_amount
+                if remaining_pool[mana_type] < 0:
+                    return False
+
+        return True
 
     def is_empty(self):
         for c in manachr:
             if self.pool[chr_to_mana(c)] != 0:
                 return False
         return True
-
 
     def determine_costs(self, manacost):
         """ Converts string mana costs to mana dict, resolving hybrid / additional costs"""
@@ -100,7 +118,6 @@ class ManaPool():
         # TODO: define value of X
         return cost
 
-
     def canPay(self, manacost, convoke=False):
         """manacost here is a string, e.g. 2U, or a dict of Manas (e.g. {Mana.BLUE, 3})
 
@@ -120,33 +137,39 @@ class ManaPool():
         genericMana = manacost[Mana.GENERIC]
 
         if genericMana > 0:
-            if self.controller.autoPayMana:
-                choice = ''
-            else:
-                choice = self.controller.make_choice(
-                    'How would you like to pay {}? Enter blank for automatic payment, or enter a string of colored mana\n'.format(genericMana))
+                # Uncomment the user input logic
+                if self.controller.autoPayMana:
+                    choice = ''
+                else:
+                    choice = self.controller.make_choice(
+                        'How would you like to pay {}? Enter blank for automatic payment, or enter a string of colored mana\n'.format(genericMana))
 
-            if re.match('[WUBRGC]+', choice) and len(choice) == genericMana:
-                for c in choice:
-                    manacost[chr_to_mana(c)] += 1
-                genericMana = 0
-            else:  # default
-                # print("automatic payment...\n")
-                for mana in Mana:
-                    if genericMana == 0:
-                        break
-                    if self.pool[mana] >= manacost[mana]:
-                        amount = min(self.pool[mana] - manacost[mana], genericMana)
-                        manacost[mana] += amount
-                        genericMana -= amount
+                if re.match('[WUBRGC]+', choice) and len(choice) == genericMana:
+                    for c in choice:
+                        manacost[chr_to_mana(c)] += 1
+                    genericMana = 0
+                else:  # default
+                    # print("automatic payment...\n")
+                    while genericMana > 0 and any(self.pool[mana] > manacost[mana] for mana in Mana):
+                        for mana in Mana:
+                            if genericMana == 0:
+                                break
+                            if self.pool[mana] > manacost[mana]:
+                                available_mana = self.pool[mana] - manacost[mana]
+                                amount = min(available_mana, genericMana)
+                                manacost[mana] += amount
+                                genericMana -= amount
+                            print(f"Paying {amount} generic mana using {mana}")  # Debugging print statement
 
         manacost[Mana.GENERIC] = genericMana
-        
+
         if genericMana > 0:
+            print(f"Unpaid generic mana: {genericMana}")  # Debugging print statement
             return False
 
         for mana in Mana:
             if self.pool[mana] < manacost[mana]:
+                print(f"Insufficient {mana}: Pool has {self.pool[mana]}, required {manacost[mana]}")
                 return False
 
         return manacost
