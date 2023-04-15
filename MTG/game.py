@@ -15,6 +15,9 @@ from MTG import triggers
 from MTG.exceptions import *
 
 
+def DebugPrint(inpt):
+    print(f"\033[91m{inpt}\033[0m\n")
+
 class Game(object):
     """A game object. This represents the entire state of an in-progress MTG game.
 
@@ -75,7 +78,7 @@ class Game(object):
 
     def apply_stack_item(self, stack_item):
         """ resolving a spell/effect from stack, removing it from the stack """
-        print(stack_item)
+        DebugPrint(stack_item)
         stack_item.apply()
         self.stack.remove(stack_item)
 
@@ -146,6 +149,7 @@ class Game(object):
 
 
     def handle_priority(self, step, priority=None):
+        """"""
         # priority tracks the index of the player that currently have priority
         if priority is None:
             priority = self.players_list.index(self.current_player)
@@ -225,14 +229,17 @@ class Game(object):
                     self.stack.add(_play)  # add to stack
 
     def handle_beginning_phase(self, step):
-        print("in beginning phase")
+        DebugPrint("in beginning phase")
         if step is gamesteps.Step.UNTAP:
+            # untap all the creatures for current player
             self.apply_to_battlefield(lambda p: p.untap(),
                                       lambda p: p.controller is self.current_player)
+            # reset the lands played
             for _player in self.players_list:
                 _player.landPlayed = 0
 
         elif step is gamesteps.Step.UPKEEP:
+            # apply all cards triggered on Upkeep
             self.trigger(triggers.triggerConditions.onUpkeep)
             self.handle_priority(step)
 
@@ -493,8 +500,8 @@ class Game(object):
 
         while self.pending_steps:
             self.step = self.pending_steps.pop(0)
-            print(self.pending_steps)
-            print(self.step)
+            DebugPrint(self.pending_steps)
+            DebugPrint(self.step)
             {
                 gamesteps.Step.UNTAP: self.handle_beginning_phase,
                 gamesteps.Step.UPKEEP: self.handle_beginning_phase,
@@ -544,7 +551,6 @@ class Game(object):
 
     # TODO
     def setup_game(self):
-        print("setting up game...")
         for _player in self.players_list:
             _player.draw(7)
         # everyone gets a turn queued up, in order
@@ -562,10 +568,10 @@ class Game(object):
                 break
 
 
-
-def start_game():
+def parseDecks():
     cards.setup_cards()
     # So that it can handle when we add multiple decks
+
     deck_path = "data/decks"
     deck_files = os.listdir(deck_path)
     decks = []
@@ -575,7 +581,10 @@ def start_game():
     if len(decks) == 1:
         # if only one deck available, make two instances of the game by creating it again for the other player
         decks.append(decks[0])
-        
+    return decks
+
+def start_game():
+    decks = parseDecks()
     GAME = Game(decks)
     GAME_PREVIOUS_STATE = None
     GAME.run_game()
