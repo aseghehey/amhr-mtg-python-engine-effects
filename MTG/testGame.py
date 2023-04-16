@@ -22,6 +22,9 @@ from MTG.exceptions import *
     Only doing instants for now
 """
 
+def getCardName(card):
+    return card.characteristics.name
+
 def getInstants(hand):
     instants = []
     for card in hand:
@@ -38,17 +41,29 @@ if __name__ == "__main__":
     decks = game.parseDecks()
     gamePlayed = game.Game(decks)
     gamePlayed.setup_game()
+    cardsPlayed = set()
 
     players = gamePlayed.players_list
     handPlayer0 = players[0].hand
 
     instants = getInstants(handPlayer0)
-    # printCardCharacteristics(instants)
+    printCardCharacteristics(instants)
+    gamePlayed.step = gamesteps.Step.BEGINNING_OF_COMBAT
 
     for instant in instants:
-        try:
-            _play = play.Play(instant.play_func, card=instant)
-        except:
-            raise Exception(f"Could not play {instant}")
+        cardName = getCardName(instant)
+        if cardName in cardsPlayed:
+            # ignore cards we've already tested
+            continue
 
+        canTarget = instant.targets()
+        try:
+            inPlay = play.Play(apply_func=instant.play_func,
+                               card=instant)
+            inPlay.apply()
+            print(players[1].life)            
+            cardsPlayed.add(cardName)
+        except:
+            raise Exception(f"Could not play {instant.characteristics.name}")
+        
  
