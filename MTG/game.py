@@ -78,7 +78,6 @@ class Game(object):
 
     def apply_stack_item(self, stack_item):
         """ resolving a spell/effect from stack, removing it from the stack """
-        DebugPrint(stack_item)
         stack_item.apply()
         self.stack.remove(stack_item)
 
@@ -229,7 +228,6 @@ class Game(object):
                     self.stack.add(_play)  # add to stack
 
     def handle_beginning_phase(self, step):
-        DebugPrint("in beginning phase")
         if step is gamesteps.Step.UNTAP:
             # untap all the creatures for current player
             self.apply_to_battlefield(lambda p: p.untap(),
@@ -500,8 +498,7 @@ class Game(object):
 
         while self.pending_steps:
             self.step = self.pending_steps.pop(0)
-            DebugPrint(self.pending_steps)
-            DebugPrint(self.step)
+            print(self.step)
             {
                 gamesteps.Step.UNTAP: self.handle_beginning_phase,
                 gamesteps.Step.UPKEEP: self.handle_beginning_phase,
