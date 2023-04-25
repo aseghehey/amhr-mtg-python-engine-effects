@@ -86,7 +86,7 @@ Touch of the Eternal
 Moorland Inquisitor
 
 	Abilities:
-    	2, P: self.card.add_effect('gainAbility', 'First Strike', self, self.game.eot_time)
+    	2W: self.card.add_effect('gainAbility', 'First Strike', self, self.game.eot_time)
 
 ##############################
 Root Spider
