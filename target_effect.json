@@ -1,0 +1,12 @@
+{
+    "Counter target spell." : "targets[0].counter(source=self)",
+    "Destroy target artifact." : "targets[0].destroy()",
+    "Destroy target artifact or enchantment." : "targets[0].destroy()",
+    "Destroy target enchantment." : "targets[0].destroy()",
+    "Destroy target nonartifact creature." : "targets[0].destroy()",
+    "Destroy target creature." : "targets[0].destroy()",
+    "Destroy target nonlegendary creature." : "targets[0].destroy()",
+    "Destroy target creature or enchantment." : "targets[0].destroy()",
+    "Target player gains 3 life." : "self.gain_life(3)",
+    "Target player gains 4 life." : "self.gain_life(4)"
+}

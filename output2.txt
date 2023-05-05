@@ -1,0 +1,9206 @@
+##############################
+Bandage
+
+	Targets:
+			'creature or player'
+
+	self.controller.draw(1)
+
+
+##############################
+Demystify
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+
+
+##############################
+Reviving Dose
+
+	self.controller.draw(1)
+	self.controller.gain_life(3)
+
+
+##############################
+Cancel
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Discombobulate
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Twitch
+
+	Targets:
+			p.is_artifact
+
+	self.controller.draw(1)
+
+
+##############################
+Afflict
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-1, -1), self, self.game.eot_time)
+	self.controller.draw(1)
+
+
+##############################
+Essence Drain
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+	self.controller.gain_life(3)
+
+
+##############################
+Recover
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Soul Feast
+
+	Targets:
+			'player'
+
+	self.controller.gain_life(4)
+
+
+##############################
+Beacon of Destruction
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Cone of Flame
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Fists of the Anvil
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 0), self, self.game.eot_time)
+
+
+##############################
+Guerrilla Tactics
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Incinerate
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Shock
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Smash
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+	self.controller.draw(1)
+
+
+##############################
+Stun
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Aggressive Urge
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+	self.controller.draw(1)
+
+
+##############################
+Giant Growth
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Might of Oaks
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (7, 7), self, self.game.eot_time)
+
+
+##############################
+Naturalize
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Disenchant
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Healing Salve
+
+	Targets:
+			'player'
+
+	self.gain_life(3)
+
+
+##############################
+Counterspell
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Psionic Blast
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Lightning Bolt
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Shatter
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Battlefield Promotion
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Mana Drain
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Thought Scour
+
+	Targets:
+			'player'
+
+	self.controller.draw(1)
+
+
+##############################
+Disfigure
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -2), self, self.game.eot_time)
+
+
+##############################
+Fiery Fall
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Lava Coil
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Rift Bolt
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Sparkmage's Gambit
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Staggershock
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Titan's Strength
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 1), self, self.game.eot_time)
+
+
+##############################
+Might of Old Krosa
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Agony Warp
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -0), self, self.game.eot_time)
+
+
+##############################
+Auger Spree
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, -4), self, self.game.eot_time)
+
+
+##############################
+Bant Charm
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Izzet Charm
+
+	Targets:
+			'instant or sorcery spell'
+
+	self.controller.draw(2)
+	self.controller.discard(2)
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Jeskai Charm
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Kolaghan's Command
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Lightning Helix
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+	self.controller.gain_life(3)
+
+
+##############################
+Martial Glory
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 0), self, self.game.eot_time)
+
+
+##############################
+Prophetic Bolt
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Terminate
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Strength of Arms
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Force of Will
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Hinder
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Pongify
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Abrade
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Brimstone Volley
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Dismantle
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Galvanic Blast
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Lightning Axe
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Crushing Vines
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Invigorate
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 4), self, self.game.eot_time)
+
+
+##############################
+Unlicensed Disintegration
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Crumble
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Blight Grenade
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Mandate of Abaddon
+
+	Targets:
+			'creature'
+
+	self.game.apply_to_battlefield(
+		lambda p: p.destroy(),
+		lambda p: p.is_creature)
+
+##############################
+Kill! Maim! Burn!
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Collective Effort
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Fell the Mighty
+
+	Targets:
+			'creature'
+
+	self.game.apply_to_battlefield(
+		lambda p: p.destroy(),
+		lambda p: p.is_creature)
+
+##############################
+Bituminous Blast
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Hull Breach
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Mortify
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Mana Clash
+
+	Targets:
+			'opponent'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Winter Blast
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Abuna's Chant
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(5)
+
+
+##############################
+Stand Firm
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+
+
+##############################
+Fold into Aether
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Devour in Shadow
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Lose Hope
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-1, -1), self, self.game.eot_time)
+
+
+##############################
+Magma Jet
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Rain of Rust
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Ferocious Charge
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 4), self, self.game.eot_time)
+
+
+##############################
+Tel-Jilad Justice
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Divine Offering
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Memory Lapse
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Touch of Death
+
+	targets[0].take_damage(self, 1)
+	self.controller.gain_life(1)
+
+
+##############################
+Flare
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Shrink
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-5, -0), self, self.game.eot_time)
+
+
+##############################
+Desertion
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Polymorph
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Hammer of Bogardan
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Lightning Blast
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Vertigo
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Volcanic Hammer
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Monstrous Growth
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 4), self, self.game.eot_time)
+
+
+##############################
+Rewind
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Vicious Hunger
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+	self.controller.gain_life(2)
+
+
+##############################
+Searing Wind
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 10)
+
+
+##############################
+Path of Peace
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Arcane Denial
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Exclude
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Pact of Negation
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Twisted Image
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Murder
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Chandra's Outrage
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Cinder Storm
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 7)
+
+
+##############################
+Skeletonize
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Boros Charm
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Decommission
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+	self.controller.gain_life(3)
+
+
+##############################
+Illusionist's Stratagem
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Leave in the Dust
+
+	Targets:
+			p.is_permanent and not p.is_land
+
+	self.controller.draw(1)
+
+
+##############################
+Cruel Finality
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -2), self, self.game.eot_time)
+
+
+##############################
+Chandra's Revolution
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Destructive Tampering
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Hungry Flames
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Highspire Infusion
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Tezzeret's Betrayal
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Phthisis
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Rile
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Spit Flame
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Return to Nature
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Rakdos Charm
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+You're Ambushed on the Road
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 3), self, self.game.eot_time)
+
+
+##############################
+Shocking Grasp
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -0), self, self.game.eot_time)
+	self.controller.draw(1)
+
+
+##############################
+You Find the Villains' Lair
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	self.controller.draw(2)
+	self.controller.discard(2)
+
+
+##############################
+Ray of Enfeeblement
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -1), self, self.game.eot_time)
+
+
+##############################
+Burning Hands
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Dragon's Fire
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Farideh's Fireball
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Improvised Weaponry
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+You Come to the Gnoll Camp
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 1), self, self.game.eot_time)
+
+
+##############################
+You Find Some Prisoners
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+You Find a Cursed Idol
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Weight of Memory
+
+	Targets:
+			'player'
+
+	self.controller.draw(3)
+
+
+##############################
+Scorching Dragonfire
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Lightning Strike
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Impeccable Timing
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Blazing Volley
+
+	Targets:
+			p.is_opponent
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Deem Worthy
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 7)
+
+
+##############################
+Electrify
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Magma Spray
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Dissenter's Deliverance
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Shed Weakness
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Lethal Sting
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Blur of Blades
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Open Fire
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Puncturing Blow
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Bone Splinters
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Resounding Thunder
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Resounding Roar
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Branching Bolt
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Esper Charm
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+	self.controller.draw(2)
+
+
+##############################
+Grixis Charm
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -4), self, self.game.eot_time)
+
+
+##############################
+Hindering Light
+
+	Targets:
+			'spell'
+
+	self.controller.draw(1)
+
+
+##############################
+Jund Charm
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Naya Charm
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Punish Ignorance
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	self.controller.gain_life(3)
+
+
+##############################
+Fevered Strength
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 0), self, self.game.eot_time)
+
+
+##############################
+Death Spark
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Primitive Justice
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+	self.controller.gain_life(1)
+
+
+##############################
+Compound Fracture
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-1, -1), self, self.game.eot_time)
+
+
+##############################
+Bombard
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Inescapable Blaze
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 6)
+
+
+##############################
+Reduce to Ashes
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Feral Roar
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 4), self, self.game.eot_time)
+
+
+##############################
+Titanic Growth
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 4), self, self.game.eot_time)
+
+
+##############################
+Orim's Thunder
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Last Caress
+
+	Targets:
+			'player'
+
+	self.controller.draw(1)
+	self.controller.gain_life(1)
+
+
+##############################
+Urborg Uprising
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Tranquil Path
+
+	self.controller.draw(1)
+	self.game.apply_to_battlefield(
+		lambda p: p.destroy(),
+		lambda p: p.is_enchantment)
+
+##############################
+Consume Strength
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Suffocating Blast
+
+	Targets:
+			'spell'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Offering to Asha
+
+	Targets:
+			'spell'
+
+	self.controller.gain_life(4)
+
+
+##############################
+Brainbite
+
+	Targets:
+			'opponent'
+
+	self.controller.draw(1)
+
+
+##############################
+Thought Hemorrhage
+
+	Targets:
+			'player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Intimidation Bolt
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Gleeful Sabotage
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Goblin Grenade
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Cursebreak
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+	self.controller.gain_life(2)
+
+
+##############################
+Righteous Blow
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Crippling Chill
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Fleeting Distraction
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-1, -0), self, self.game.eot_time)
+	self.controller.draw(1)
+
+
+##############################
+Pillar of Flame
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Thunderbolt
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Thunderous Wrath
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Joint Assault
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Natural End
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+	self.controller.gain_life(3)
+
+
+##############################
+Rain of Thorns
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Out of Bounds
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Shoulder to Shoulder
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Solemn Offering
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+	self.controller.gain_life(4)
+
+
+##############################
+Tandem Tactics
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Mystic Confluence
+
+	Targets:
+			'spell'
+
+	self.controller.draw(1)
+
+
+##############################
+Assassin's Strike
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Last Gasp
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -3), self, self.game.eot_time)
+
+
+##############################
+Liturgy of Blood
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Bathe in Dragonfire
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Chain Lightning
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Expedite
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Wrap in Flames
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Pulse of Murasa
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(6)
+
+
+##############################
+Gideon's Reproach
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Lithomancer's Focus
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Roilmage's Trick
+
+	Targets:
+			p.is_opponent
+
+	self.controller.draw(1)
+
+
+##############################
+Scatter to the Winds
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Grave Birthing
+
+	Targets:
+			'opponent'
+
+	self.controller.draw(1)
+
+
+##############################
+Demon's Grasp
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-5, -5), self, self.game.eot_time)
+
+
+##############################
+Processor Assault
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Serpentine Spike
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Touch of the Void
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Boiling Earth
+
+	Targets:
+			p.is_opponent
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Swell of Growth
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Brutal Expulsion
+
+	Targets:
+			'spell'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Dawn to Dusk
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+
+
+##############################
+Eye Gouge
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-1, -1), self, self.game.eot_time)
+
+
+##############################
+Bolt of Keranos
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Fated Conflagration
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Scouring Sands
+
+	Targets:
+			p.is_opponent
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Searing Blood
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Minamo's Meddling
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Shower of Sparks
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Sonic Burst
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Dismiss
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	self.controller.draw(1)
+
+
+##############################
+Fissure Vent
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Krosan Grip
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Slice in Twain
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+	self.controller.draw(1)
+
+
+##############################
+Crosis's Charm
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Dromar's Charm
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	targets[0].add_effect('modifyPT', (-2, -2), self, self.game.eot_time)
+	self.controller.gain_life(5)
+
+
+##############################
+Volcanic Offering
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 7)
+
+
+##############################
+Afterlife
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Tragic Slip
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-1, -1), self, self.game.eot_time)
+
+
+##############################
+Righteous Confluence
+
+	Targets:
+			p.is_enchantment
+
+	self.controller.gain_life(5)
+
+
+##############################
+Wretched Confluence
+
+	Targets:
+			'player'
+
+	targets[0].add_effect('modifyPT', (-2, -2), self, self.game.eot_time)
+
+
+##############################
+Fiery Confluence
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Rapid Hybridization
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Repeal
+
+	Targets:
+			p.is_permanent and not p.is_land
+
+	self.controller.draw(1)
+
+
+##############################
+Mizzium Mortars
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Urza's Rage
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Golgari Charm
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+
+
+##############################
+Snakeform
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Parting Thoughts
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Artifact Mutation
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Aura Mutation
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+
+
+##############################
+Silumgar's Command
+
+	Targets:
+			'instant or sorcery spell'
+
+	targets[0].add_effect('modifyPT', (-3, -3), self, self.game.eot_time)
+
+
+##############################
+Dismantling Blow
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Leadership Vacuum
+
+	Targets:
+			'player'
+
+	self.controller.draw(1)
+
+
+##############################
+Ray of Distortion
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Fervent Denial
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Alchemist's Greeting
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Fiery Temper
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Sultai Charm
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+	self.controller.draw(2)
+	self.controller.discard(1)
+
+
+##############################
+Deathsprout
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Pest Infestation
+
+	Targets:
+			p.is_artifact
+
+	self.controller.gain_life(1)
+
+
+##############################
+Reinterpret
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Traumatic Visions
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Hanabi Blast
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Mindblaze
+
+	Targets:
+			'player'
+
+	targets[0].take_damage(self, 8)
+
+
+##############################
+Yamabushi's Flame
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Bane's Contingency
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Blur
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Dream Fracture
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	self.controller.draw(1)
+
+
+##############################
+Thunderwave
+
+	Targets:
+			p.is_opponent
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Poison the Blade
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Demon Bolt
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Natural Reclamation
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Spell Crumple
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Cleansing Beam
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Evil Boros Charm
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+	self.controller.gain_life(2)
+
+
+##############################
+Repulse
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Scattering Stroke
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Footbottom Feast
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Lash Out
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Punishing Fire
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Forceful Denial
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Bladebrand
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Explosion of Riches
+
+	Targets:
+			'opponent'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Renegade Tactics
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Wildsize
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Fists of Flame
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Simic Charm
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Absorb Vis
+
+	Targets:
+			'player'
+
+	self.controller.gain_life(4)
+
+
+##############################
+Burn Away
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 6)
+
+
+##############################
+Flame Slash
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Irresistible Prey
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Lace with Moonglove
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Orcish Cannonade
+
+	Targets:
+			'creature or player'
+
+	self.controller.draw(1)
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Nature's Claim
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Provoke
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Lapse of Certainty
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Constricting Tendrils
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -0), self, self.game.eot_time)
+
+
+##############################
+Dark Temper
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Filigree Fracture
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Controvert
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Soul Spike
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+	self.controller.gain_life(4)
+
+
+##############################
+Surging Flame
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Mystic Melting
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Resize
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Fateful Absence
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Flare of Faith
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Devious Cover-Up
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Dissipate
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Startle
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -0), self, self.game.eot_time)
+	self.controller.draw(1)
+
+
+##############################
+Bloodline Culling
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-5, -5), self, self.game.eot_time)
+
+
+##############################
+Foul Play
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Infernal Grasp
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Olivia's Midnight Ambush
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -2), self, self.game.eot_time)
+
+
+##############################
+Burn Down the House
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Burn the Accursed
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Cathartic Pyre
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Moonrager's Slash
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Neonate's Rush
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Play with Fire
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Raze the Effigy
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Stolen Vitality
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 1), self, self.game.eot_time)
+
+
+##############################
+Might of the Old Ways
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Sacred Fire
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+	self.controller.gain_life(2)
+
+
+##############################
+Piercing Light
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Sanctify
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+	self.controller.gain_life(3)
+
+
+##############################
+Chill of the Grave
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Syphon Essence
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Grisly Ritual
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Parasitic Grasp
+
+	targets[0].take_damage(self, 3)
+	self.controller.gain_life(3)
+
+
+##############################
+Vampire's Kiss
+
+	Targets:
+			'player'
+
+	self.controller.draw(1)
+	self.controller.gain_life(2)
+
+
+##############################
+Ancestral Anger
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Bloody Betrayal
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Flame-Blessed Bolt
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Lacerate Flesh
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Rending Flame
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Vampires' Vengeance
+
+	self.controller.draw(1)
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Crushing Canopy
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Firebolt
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Flame Javelin
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Fireblast
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Ichor Slick
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -3), self, self.game.eot_time)
+
+
+##############################
+Darigaaz's Charm
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Treva's Charm
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+	self.controller.draw(1)
+	self.controller.discard(1)
+
+
+##############################
+Abolish
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Foil
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Ghostfire
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Undermine
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Searing Blaze
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Pyromatics
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Vampire's Bite
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 0), self, self.game.eot_time)
+
+
+##############################
+Sorin's Thirst
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+	self.controller.gain_life(2)
+
+
+##############################
+Urge to Feed
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -3), self, self.game.eot_time)
+
+
+##############################
+Blazing Salvo
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Geistflame
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Destructive Revelry
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Volt Charge
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Remand
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	self.controller.draw(1)
+
+
+##############################
+Last Kiss
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+	self.controller.gain_life(2)
+
+
+##############################
+Reckless Abandon
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Arc Trail
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Time to Feed
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(3)
+
+
+##############################
+Plasm Capture
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Repel the Darkness
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Groundswell
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Gaea's Blessing
+
+	Targets:
+			'player'
+
+	self.controller.draw(1)
+
+
+##############################
+Grapeshot
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Shivan Meteor
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 13)
+
+
+##############################
+Shrapnel Blast
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Fatal Fumes
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -2), self, self.game.eot_time)
+
+
+##############################
+Punish the Enemy
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Phytoburst
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (5, 5), self, self.game.eot_time)
+
+
+##############################
+Pilfered Plans
+
+	Targets:
+			'player'
+
+	self.controller.draw(2)
+
+
+##############################
+Render Silent
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Warleader's Helix
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+	self.controller.gain_life(4)
+
+
+##############################
+Carom
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Steeling Stance
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+
+
+##############################
+Cackling Flames
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Flash Foliage
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Twinstrike
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Ray of Revelation
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+
+
+##############################
+Bone to Ash
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Counterlash
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Death's Caress
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Gravepurge
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Burning Oil
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Fires of Undeath
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Unite the Coalition
+
+	Targets:
+			'player'
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Destroy Evil
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Stall for Time
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Ertai's Scorn
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Timely Interference
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-1, -0), self, self.game.eot_time)
+	self.controller.draw(1)
+
+
+##############################
+Tolarian Geyser
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+	self.controller.gain_life(3)
+
+
+##############################
+Extinguish the Light
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(3)
+
+
+##############################
+Tribute to Urborg
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -2), self, self.game.eot_time)
+
+
+##############################
+Urborg Repossession
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Flowstone Infusion
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, -2), self, self.game.eot_time)
+
+
+##############################
+Hurloon Battle Hymn
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 4)
+	self.controller.gain_life(4)
+
+
+##############################
+Jaya's Firenado
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Smash to Dust
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Colossal Growth
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Healing Grace
+
+	Targets:
+			'creature or player'
+
+	self.controller.gain_life(3)
+
+
+##############################
+Invoke the Divine
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+	self.controller.gain_life(4)
+
+
+##############################
+Befuddle
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -0), self, self.game.eot_time)
+	self.controller.draw(1)
+
+
+##############################
+Wizard's Retort
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Blessing of Belzenlok
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 1), self, self.game.eot_time)
+
+
+##############################
+Eviscerate
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Fungal Infection
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-1, -1), self, self.game.eot_time)
+
+
+##############################
+Vicious Offering
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -2), self, self.game.eot_time)
+
+
+##############################
+Fiery Intervention
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Fight with Fire
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Goblin Barrage
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Shivan Fire
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Wizard's Lightning
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Broken Bond
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Pierce the Sky
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 7)
+
+
+##############################
+Counterbore
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Last Word
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Vex
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Barbed Lightning
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Oxidize
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Artful Maneuver
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Resupply
+
+	self.controller.draw(1)
+	self.controller.gain_life(6)
+
+
+##############################
+Contradict
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	self.controller.draw(1)
+
+
+##############################
+Learn from the Past
+
+	Targets:
+			'player'
+
+	self.controller.draw(1)
+
+
+##############################
+Flatten
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -4), self, self.game.eot_time)
+
+
+##############################
+Foul-Tongue Invocation
+
+	Targets:
+			'player'
+
+	self.controller.gain_life(4)
+
+
+##############################
+Draconic Roar
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Roast
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Sarkhan's Rage
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Vandalize
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Ojutai's Command
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+	self.controller.gain_life(4)
+
+
+##############################
+Searing Spear
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Veteran's Reflexes
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+
+
+##############################
+True Love's Kiss
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	self.controller.draw(1)
+
+
+##############################
+Didn't Say Please
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Turn into a Pumpkin
+
+	Targets:
+			p.is_permanent and not p.is_land
+
+	self.controller.draw(1)
+	self.controller.gain_life(3)
+
+
+##############################
+Bake into a Pie
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	self.controller.gain_life(3)
+
+
+##############################
+Foreboding Fruit
+
+	Targets:
+			'player'
+
+	self.controller.gain_life(3)
+
+
+##############################
+Forever Young
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Redcap Melee
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Searing Barrage
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Slaying Fire
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Fell the Pheasant
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+	self.controller.gain_life(3)
+
+
+##############################
+Shelter
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Carbonize
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Flame Jab
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Blessed Alliance
+
+	Targets:
+			'player'
+
+	self.gain_life(4)
+
+
+##############################
+Drag Under
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Borrowed Malevolence
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+
+
+##############################
+Certain Death
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	self.controller.gain_life(2)
+
+
+##############################
+Collective Brutality
+
+	Targets:
+			'opponent'
+
+	targets[0].add_effect('modifyPT', (-2, -2), self, self.game.eot_time)
+	self.controller.gain_life(2)
+
+
+##############################
+Borrowed Hostility
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 0), self, self.game.eot_time)
+
+
+##############################
+Collective Defiance
+
+	Targets:
+			'player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Incendiary Flow
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Make Mischief
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Otherworldly Outburst
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 0), self, self.game.eot_time)
+
+
+##############################
+Savage Alliance
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Stensia Banquet
+
+	Targets:
+			p.is_permanent and (p.is_opponent or p.is_planeswalker)
+
+	self.controller.draw(1)
+
+
+##############################
+Springsage Ritual
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+	self.controller.gain_life(4)
+
+
+##############################
+Syphon Life
+
+	Targets:
+			'player'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Puncture Blast
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Rekindled Flame
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Monstrify
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 4), self, self.game.eot_time)
+
+
+##############################
+Inside Out
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Allay
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+
+
+##############################
+Forbid
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Shattering Pulse
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Tendrils of Agony
+
+	Targets:
+			'player'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Dismember
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-5, -5), self, self.game.eot_time)
+
+
+##############################
+Ancient Grudge
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Dissolve
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Stoke the Flames
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Smash to Smithereens
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Spatial Contortion
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, -3), self, self.game.eot_time)
+
+
+##############################
+Delay
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Funeral Charm
+
+	Targets:
+			'player'
+
+	targets[0].add_effect('modifyPT', (2, -1), self, self.game.eot_time)
+
+
+##############################
+Fiery Gambit
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Hornet Sting
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Pressure Point
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Sandblast
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Refocus
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Douse in Gloom
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+	self.controller.gain_life(2)
+
+
+##############################
+Collateral Damage
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Wild Slash
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Cunning Strike
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Arc Blade
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Thunderblade Charge
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Cyclical Evolution
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Ribbons of Night
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+	self.controller.gain_life(4)
+
+
+##############################
+Char
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Electrickery
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Shattering Spree
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Darkblast
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-1, -1), self, self.game.eot_time)
+
+
+##############################
+Gather Courage
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Azorius Charm
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	self.controller.draw(1)
+
+
+##############################
+Dramatic Rescue
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Grasp of Darkness
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -4), self, self.game.eot_time)
+
+
+##############################
+Withstand
+
+	Targets:
+			'creature or player'
+
+	self.controller.draw(1)
+
+
+##############################
+Runeboggle
+
+	Targets:
+			'spell'
+
+	self.controller.draw(1)
+
+
+##############################
+Schismotivate
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 0), self, self.game.eot_time)
+
+
+##############################
+Take Heart
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Dazzling Lights
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -0), self, self.game.eot_time)
+
+
+##############################
+Sinister Sabotage
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Creeping Chill
+
+	targets[0].take_damage(self, 3)
+	self.controller.gain_life(3)
+
+
+##############################
+Deadly Visit
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Price of Fame
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Vicious Rumors
+
+	targets[0].take_damage(self, 1)
+	self.controller.gain_life(1)
+
+
+##############################
+Command the Storm
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Cosmotronic Wave
+
+	Targets:
+			p.is_opponent
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Direct Current
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Bounty of Might
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Pack's Favor
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Sprouting Renewal
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Artful Takedown
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -4), self, self.game.eot_time)
+
+
+##############################
+Hypothesizzle
+
+	Targets:
+			'creature'
+
+	self.controller.draw(2)
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Ionize
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Sonic Assault
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Precision Bolt
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Vraska's Stoneglare
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Qilin's Blessing
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Dragon's Presence
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Breath of Fire
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Cleansing Screech
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Scatter Arc
+
+	Targets:
+			'instant or sorcery spell'
+
+	self.controller.draw(1)
+
+
+##############################
+Homing Lightning
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Mugging
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Structural Collapse
+
+	Targets:
+			'player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Mystic Genesis
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Psychic Strike
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Purge the Profane
+
+	Targets:
+			'opponent'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Arrows of Justice
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Archmage's Charm
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Magmatic Sinkhole
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Shenanigans
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Sune's Intervention
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Valiant Farewell
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Hypnotic Pattern
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -0), self, self.game.eot_time)
+
+
+##############################
+Mephit's Enthusiasm
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Prophecy
+
+	Targets:
+			'opponent'
+
+	self.controller.gain_life(1)
+
+
+##############################
+Inferno Jet
+
+	Targets:
+			p.is_permanent and (p.is_opponent or p.is_planeswalker)
+
+	targets[0].take_damage(self, 6)
+
+
+##############################
+Spoils of Evil
+
+	Targets:
+			'opponent'
+
+	self.controller.gain_life(1)
+
+
+##############################
+Divine Arrow
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Light of Hope
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+	self.controller.gain_life(4)
+
+
+##############################
+Spontaneous Flight
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Will of the All-Hunter
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Gust of Wind
+
+	Targets:
+			p.is_permanent and not p.is_land
+
+	self.controller.draw(1)
+
+
+##############################
+Keep Safe
+
+	Targets:
+			'spell'
+
+	self.controller.draw(1)
+
+
+##############################
+Neutralize
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Blood Curdle
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Mutual Destruction
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Fire Prophecy
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Flame Spill
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Heightened Reflexes
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 0), self, self.game.eot_time)
+
+
+##############################
+Shredded Sails
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Fully Grown
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Monstrous Step
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (7, 7), self, self.game.eot_time)
+
+
+##############################
+Sudden Spinnerets
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 3), self, self.game.eot_time)
+
+
+##############################
+Wilt
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Inspired Ultimatum
+
+	Targets:
+			'player'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Guided Strike
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Bewilder
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -0), self, self.game.eot_time)
+	self.controller.draw(1)
+
+
+##############################
+Cryptic Command
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	self.controller.draw(1)
+
+
+##############################
+Ulcerate
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -3), self, self.game.eot_time)
+
+
+##############################
+Fury Charm
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Aerial Predation
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Prey's Vengeance
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Winnow
+
+	Targets:
+			p.is_permanent and not p.is_land
+
+	self.controller.draw(1)
+
+
+##############################
+Crystal Spray
+
+	Targets:
+			'spell'
+
+	self.controller.draw(1)
+
+
+##############################
+Sway of Illusion
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Teferi's Response
+
+	Targets:
+			'spell'
+
+	self.controller.draw(2)
+
+
+##############################
+Chaotic Strike
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Lightning Dart
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Scorching Lava
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Turf Wound
+
+	Targets:
+			'player'
+
+	self.controller.draw(1)
+
+
+##############################
+Zap
+
+	Targets:
+			'creature or player'
+
+	self.controller.draw(1)
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Explosive Growth
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Absorb
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	self.controller.gain_life(3)
+
+
+##############################
+Simoon
+
+	Targets:
+			'opponent'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Lost in the Mist
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Into the Maw of Hell
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 13)
+
+
+##############################
+Overwhelming Forces
+
+	Targets:
+			'opponent'
+
+	self.game.apply_to_battlefield(
+		lambda p: p.destroy(),
+		lambda p: p.is_creature)
+
+##############################
+Late to Dinner
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(3)
+
+
+##############################
+Phantasmal Form
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Mob
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Unholy Heat
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Verdant Command
+
+	Targets:
+			'player'
+
+	self.gain_life(3)
+
+
+##############################
+Terminal Agony
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Aegis of the Heavens
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 7), self, self.game.eot_time)
+
+
+##############################
+Thought Collapse
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Agonizing Syphon
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+	self.controller.gain_life(3)
+
+
+##############################
+Launch Party
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Blindblast
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Flame Lash
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Flames of the Raze-Boar
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Heartfire
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Countermand
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Starfall
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Grip of Amnesia
+
+	Targets:
+			'spell'
+
+	self.controller.draw(1)
+
+
+##############################
+Laquatus's Disdain
+
+	Targets:
+			'spell'
+
+	self.controller.draw(1)
+
+
+##############################
+Spelljack
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Ember Shot
+
+	Targets:
+			'creature or player'
+
+	self.controller.draw(1)
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Lava Dart
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Lightning Surge
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Swelter
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Sudden Strength
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+	self.controller.draw(1)
+
+
+##############################
+Casualties of War
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Revitalize
+
+	self.controller.draw(1)
+	self.controller.gain_life(3)
+
+
+##############################
+Saw It Coming
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Poison the Cup
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Weigh Down
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -3), self, self.game.eot_time)
+
+
+##############################
+Provoke the Trolls
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Squash
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 6)
+
+
+##############################
+Tibalt's Trickery
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Mammoth Growth
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 4), self, self.game.eot_time)
+
+
+##############################
+Acrobatic Maneuver
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Built to Last
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Disappearing Act
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Failed Inspection
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	self.controller.draw(1)
+	self.controller.discard(1)
+
+
+##############################
+Insidious Will
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Essence Extraction
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+	self.controller.gain_life(3)
+
+
+##############################
+Subtle Strike
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-1, -1), self, self.game.eot_time)
+
+
+##############################
+Tidy Conclusion
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Appetite for the Unnatural
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+	self.controller.gain_life(2)
+
+
+##############################
+Take Down
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Liberating Combustion
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 6)
+
+
+##############################
+Defiant Strike
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 0), self, self.game.eot_time)
+	self.controller.draw(1)
+
+
+##############################
+Blinding Spray
+
+	Targets:
+			p.is_opponent
+
+	self.controller.draw(1)
+
+
+##############################
+Murderous Cut
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Rite of the Serpent
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Throttle
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -4), self, self.game.eot_time)
+
+
+##############################
+Arrow Storm
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Bring Low
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Become Immense
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (6, 6), self, self.game.eot_time)
+
+
+##############################
+Mardu Charm
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Master the Way
+
+	Targets:
+			'creature or player'
+
+	self.controller.draw(1)
+
+
+##############################
+Winterflame
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Psychic Purge
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Familiar's Ruse
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Weed Strangle
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Needle Drop
+
+	Targets:
+			'creature or player'
+
+	self.controller.draw(1)
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Fistful of Force
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Spring Cleaning
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+
+
+##############################
+Disorient
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-7, -0), self, self.game.eot_time)
+
+
+##############################
+Stabbing Pain
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-1, -1), self, self.game.eot_time)
+
+
+##############################
+Taste of Blood
+
+	targets[0].take_damage(self, 1)
+	self.controller.gain_life(1)
+
+
+##############################
+Wring Flesh
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -1), self, self.game.eot_time)
+
+
+##############################
+Show of Valor
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 4), self, self.game.eot_time)
+
+
+##############################
+Hydrosurge
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-5, -0), self, self.game.eot_time)
+
+
+##############################
+Smelt
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Turn to Slag
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Statute of Denial
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Covenant of Blood
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+	self.controller.gain_life(4)
+
+
+##############################
+Flesh to Dust
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Blastfire Bolt
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Uncomfortable Chill
+
+	Targets:
+			p.is_opponent
+
+	self.controller.draw(1)
+
+
+##############################
+Lich's Caress
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	self.controller.gain_life(3)
+
+
+##############################
+Nightmare's Thirst
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(1)
+
+
+##############################
+Sovereign's Bite
+
+	Targets:
+			'player'
+
+	self.controller.gain_life(3)
+
+
+##############################
+Strangling Spores
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -3), self, self.game.eot_time)
+
+
+##############################
+Fiery Finish
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 7)
+
+
+##############################
+Declare Dominance
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Sarkhan's Dragonfire
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Noxious Grasp
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(1)
+
+
+##############################
+Fry
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Infuriate
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 2), self, self.game.eot_time)
+
+
+##############################
+Reckless Air Strike
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Growth Cycle
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Dark Remedy
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 3), self, self.game.eot_time)
+
+
+##############################
+Engulfing Eruption
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Read the Tides
+
+	Targets:
+			'creature'
+
+	self.controller.draw(3)
+
+
+##############################
+Sublime Epiphany
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Soul Sear
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Volcanic Salvo
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 6)
+
+
+##############################
+Liliana's Scorn
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Arrester's Zeal
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Expose Evil
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Healing Hands
+
+	Targets:
+			'player'
+
+	self.gain_life(4)
+	self.controller.draw(1)
+
+
+##############################
+Slash of Talons
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Survive the Night
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Clear the Mind
+
+	Targets:
+			'player'
+
+	self.controller.draw(1)
+
+
+##############################
+Crashing Tide
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Dark Dabbling
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Instill Infection
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Moment of Craving
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -2), self, self.game.eot_time)
+	self.controller.gain_life(2)
+
+
+##############################
+Smiting Helix
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+	self.controller.gain_life(3)
+
+
+##############################
+Tar Snare
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -2), self, self.game.eot_time)
+
+
+##############################
+Undercity's Embrace
+
+	Targets:
+			'opponent'
+
+	self.controller.gain_life(4)
+
+
+##############################
+Boulder Salvo
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Burst Lightning
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Dual Shot
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Gut Shot
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Lightning Javelin
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Release the Ants
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Elvish Fury
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Root Out
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+	self.controller.draw(1)
+
+
+##############################
+Frantic Salvage
+
+	Targets:
+			p.is_artifact
+
+	self.controller.draw(1)
+
+
+##############################
+Burn the Impure
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Mirran Mettle
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Misfortune's Gain
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Stolen Grain
+
+	Targets:
+			p.is_permanent and (p.is_opponent or p.is_planeswalker)
+
+	targets[0].take_damage(self, 5)
+	self.controller.gain_life(5)
+
+
+##############################
+Burning of Xinye
+
+	Targets:
+			'opponent'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Fire Ambush
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Symbol of Unsummoning
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Rain of Daggers
+
+	Targets:
+			'opponent'
+
+	self.game.apply_to_battlefield(
+		lambda p: p.destroy(),
+		lambda p: p.is_creature)
+
+##############################
+Soul Shred
+
+	targets[0].take_damage(self, 3)
+	self.controller.gain_life(3)
+
+
+##############################
+Bee Sting
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Wicked Reward
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 2), self, self.game.eot_time)
+
+
+##############################
+Spell Snuff
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Twisted Reflection
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-6, -0), self, self.game.eot_time)
+
+
+##############################
+Umezawa's Charm
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+	self.controller.gain_life(2)
+
+
+##############################
+Pyrophobia
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Nature's Chant
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Break Ties
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Lens Flare
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Damn
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Tragic Fall
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -3), self, self.game.eot_time)
+
+
+##############################
+Mine Collapse
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Crack Open
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Flourishing Strike
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Foundry Helix
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+	self.controller.gain_life(4)
+
+
+##############################
+Mogg Salvage
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Ebony Charm
+
+	Targets:
+			'opponent'
+
+	self.controller.gain_life(1)
+
+
+##############################
+Phyrexian Tribute
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Chaos Charm
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Cinder Cloud
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Unyaro Bee Sting
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Stoic Rebuttal
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Brute Force
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Mutagenic Growth
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Sundering Vitae
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Sudden Shock
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Thwart
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Rouse
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 0), self, self.game.eot_time)
+
+
+##############################
+Blood Oath
+
+	Targets:
+			'opponent'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Crash
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Lunge
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Thunderclap
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Shard Volley
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Stomping Slabs
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 7)
+
+
+##############################
+Earthbrawn
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Assert Authority
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Betrayal of Flesh
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Electrostatic Bolt
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Deconstruct
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Lethal Scheme
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+	self.controller.discard(1)
+
+
+##############################
+Maestros Confluence
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -3), self, self.game.eot_time)
+
+
+##############################
+Obscura Confluence
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+	self.controller.discard(1)
+
+
+##############################
+Access Denied
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Lucky Offering
+
+	Targets:
+			p.is_artifact
+
+	self.controller.gain_life(3)
+
+
+##############################
+Regent's Authority
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Wanderer's Intervention
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Disruption Protocol
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Suit Up
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Lethal Exploit
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -2), self, self.game.eot_time)
+
+
+##############################
+You Are Already Dead
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Explosive Singularity
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 10)
+
+
+##############################
+Kami's Flare
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Seismic Wave
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Voltage Surge
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Tamiyo's Safekeeping
+
+	Targets:
+			p.is_opponent
+
+	self.controller.gain_life(2)
+
+
+##############################
+Life's Finale
+
+	Targets:
+			'opponent'
+
+	self.game.apply_to_battlefield(
+		lambda p: p.destroy(),
+		lambda p: p.is_creature)
+
+##############################
+Artillerize
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Glissa's Scorn
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Leeching Bite
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+
+
+##############################
+Cease-Fire
+
+	Targets:
+			'player'
+
+	self.controller.draw(1)
+
+
+##############################
+Spiritualize
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Touch of Invisibility
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Morbid Hunger
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+	self.controller.gain_life(3)
+
+
+##############################
+Acceptable Losses
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Bash to Bits
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Engulfing Flames
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Thermal Blast
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Refresh
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Slip Through Space
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Void Shatter
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Grip of the Roil
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Overwhelming Denial
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Unnatural Endurance
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 0), self, self.game.eot_time)
+
+
+##############################
+Reality Hemorrhage
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Devour in Flames
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Tears of Valakut
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Psychic Trance
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Wheel and Deal
+
+	Targets:
+			'opponent'
+
+	self.controller.draw(1)
+
+
+##############################
+Death Pulse
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -4), self, self.game.eot_time)
+
+
+##############################
+Chain of Plasma
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Fever Charm
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 0), self, self.game.eot_time)
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Pinpoint Avalanche
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Searing Flesh
+
+	Targets:
+			p.is_permanent and (p.is_opponent or p.is_planeswalker)
+
+	targets[0].take_damage(self, 7)
+
+
+##############################
+Solar Blast
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Primal Boost
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 4), self, self.game.eot_time)
+
+
+##############################
+Enshrouding Mist
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+
+
+##############################
+Unholy Hunger
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	self.controller.gain_life(2)
+
+
+##############################
+Exquisite Firecraft
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Fiery Conclusion
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Fiery Impulse
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Bargain
+
+	Targets:
+			'opponent'
+
+	self.controller.gain_life(7)
+
+
+##############################
+Kiss of Death
+
+	Targets:
+			p.is_permanent and (p.is_opponent or p.is_planeswalker)
+
+	targets[0].take_damage(self, 4)
+	self.controller.gain_life(4)
+
+
+##############################
+Jagged Lightning
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Steal Strength
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+
+
+##############################
+Rhystic Lightning
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Wild Might
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+
+
+##############################
+Crippling Fatigue
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -2), self, self.game.eot_time)
+
+
+##############################
+Feast of Blood
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	self.controller.gain_life(4)
+
+
+##############################
+Dismal Failure
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Piracy Charm
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, -1), self, self.game.eot_time)
+
+
+##############################
+Dash Hopes
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Midnight Charm
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+	self.controller.gain_life(1)
+
+
+##############################
+Healing Leaves
+
+	Targets:
+			'player'
+
+	self.gain_life(3)
+
+
+##############################
+Spell Swindle
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Expose to Daylight
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Vampiric Feast
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+	self.controller.gain_life(4)
+
+
+##############################
+Boiling Blood
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Aura Blast
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+	self.controller.draw(1)
+
+
+##############################
+Confound
+
+	Targets:
+			'spell'
+
+	self.controller.draw(1)
+
+
+##############################
+Magma Burst
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Singe
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Defiant Stand
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 3), self, self.game.eot_time)
+
+
+##############################
+Cloak of Feathers
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Sorcerous Sight
+
+	Targets:
+			'opponent'
+
+	self.controller.draw(1)
+
+
+##############################
+Howling Fury
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 0), self, self.game.eot_time)
+
+
+##############################
+Vampiric Touch
+
+	Targets:
+			p.is_permanent and (p.is_opponent or p.is_planeswalker)
+
+	targets[0].take_damage(self, 2)
+	self.controller.gain_life(2)
+
+
+##############################
+Burning Cloak
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 0), self, self.game.eot_time)
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Scorching Spear
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Admiral's Order
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Rip Apart
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Witherbloom Command
+
+	Targets:
+			'player'
+
+	targets[0].add_effect('modifyPT', (-3, -1), self, self.game.eot_time)
+	self.controller.gain_life(2)
+
+
+##############################
+Prismari Command
+
+	Targets:
+			'creature or player'
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Lorehold Command
+
+	Targets:
+			'creature or player'
+
+	self.gain_life(3)
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Seed Spark
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Hostile Takeover
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Unleash the Inferno
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 7)
+
+
+##############################
+Confirm Suspicions
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	self.controller.draw(1)
+
+
+##############################
+Burning Fields
+
+	Targets:
+			p.is_permanent and (p.is_opponent or p.is_planeswalker)
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Wielding the Green Dragon
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 4), self, self.game.eot_time)
+
+
+##############################
+Enter the God-Eternals
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Vraska's Contempt
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Repeating Barrage
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Dizzy Spell
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -0), self, self.game.eot_time)
+
+
+##############################
+Induce Paranoia
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Quickchange
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Seeds of Strength
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+
+
+##############################
+Cleansing Ray
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+
+
+##############################
+Moment of Triumph
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+	self.controller.gain_life(2)
+
+
+##############################
+Impale
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Reckless Rage
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Shake the Foundations
+
+	self.controller.draw(1)
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Angrath's Fury
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Code of Constraint
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -0), self, self.game.eot_time)
+	self.controller.draw(1)
+
+
+##############################
+Clear the Stage
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -3), self, self.game.eot_time)
+
+
+##############################
+Consign to the Pit
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Deface
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Scorchmark
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Skewer the Critics
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Sagittars' Volley
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Applied Biomancy
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+
+
+##############################
+Final Payment
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Get the Point
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Sphinx's Insight
+
+	self.controller.draw(2)
+	self.controller.gain_life(2)
+
+
+##############################
+Ragefire
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Aura Finesse
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Deprive
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Lay Bare
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Nighthaze
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Spawning Breath
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Leaf Arrow
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Inaction Injunction
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Annihilating Fire
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Explosive Impact
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Savage Surge
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Fall of the Gavel
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+	self.controller.gain_life(5)
+
+
+##############################
+Rites of Reaping
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Astral Steel
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 2), self, self.game.eot_time)
+
+
+##############################
+Recuperate
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(6)
+
+
+##############################
+Scattershot
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Spark Spray
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Break Asunder
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Niveous Wisps
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Cerulean Wisps
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Put Away
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Aphotic Wisps
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Gloomlance
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Burn Trail
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Crimson Wisps
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Puncture Bolt
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Viridescent Wisps
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Barkshell Blessing
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Knockout Blow
+
+	Targets:
+			p.is_permanent and (p.is_creature and p.in_combat)
+
+	targets[0].take_damage(self, 4)
+	self.controller.gain_life(2)
+
+
+##############################
+Refuse to Yield
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 7), self, self.game.eot_time)
+
+
+##############################
+Revelation of Power
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Majestic Metamorphosis
+
+	Targets:
+			p.is_artifact
+
+	self.controller.draw(1)
+
+
+##############################
+Out of the Way
+
+	Targets:
+			p.is_permanent and not p.is_land
+
+	self.controller.draw(1)
+
+
+##############################
+Rooftop Nuisance
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Deal Gone Bad
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -3), self, self.game.eot_time)
+
+
+##############################
+Grisly Sigil
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+	self.controller.gain_life(3)
+
+
+##############################
+Whack
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -4), self, self.game.eot_time)
+
+
+##############################
+Antagonize
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (4, 3), self, self.game.eot_time)
+
+
+##############################
+Light 'Em Up
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Ready to Rumble
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Strangle
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+For the Family
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Brokers Charm
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	self.controller.draw(2)
+
+
+##############################
+Maestros Charm
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 5)
+	self.controller.gain_life(3)
+
+
+##############################
+Humble the Brute
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Broken Concentration
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Jace's Scrutiny
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -0), self, self.game.eot_time)
+	self.controller.draw(1)
+
+
+##############################
+Press for Answers
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Alms of the Vein
+
+	Targets:
+			'opponent'
+
+	self.controller.gain_life(3)
+
+
+##############################
+Shamble Back
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Geistblast
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Structural Distortion
+
+	Targets:
+			p.is_artifact
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Confront the Unknown
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Dosan's Oldest Chant
+
+	self.controller.draw(1)
+	self.controller.gain_life(6)
+
+
+##############################
+Halt Order
+
+	Targets:
+			p.is_artifact
+
+	self.controller.draw(1)
+
+
+##############################
+Flesh Allergy
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Tel-Jilad Defiance
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Leap
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Brush with Death
+
+	Targets:
+			'opponent'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Seething Anger
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 0), self, self.game.eot_time)
+
+
+##############################
+Arcane Subtraction
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -0), self, self.game.eot_time)
+
+
+##############################
+Snow Day
+
+	Targets:
+			'creature'
+
+	self.controller.draw(2)
+	self.controller.discard(1)
+
+
+##############################
+Lash of Malice
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, -2), self, self.game.eot_time)
+
+
+##############################
+Explosive Welcome
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Heated Debate
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Igneous Inspiration
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Pigment Storm
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Charge Through
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Devouring Tendrils
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Fortifying Draught
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Tangletrap
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Creative Outburst
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Infuse with Vitality
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Make Your Mark
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 0), self, self.game.eot_time)
+
+
+##############################
+Karametra's Blessing
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Triumphant Surge
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(3)
+
+
+##############################
+Chain to Memory
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -0), self, self.game.eot_time)
+
+
+##############################
+Memory Drain
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Drag to the Underworld
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Fateful End
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Final Flare
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Battlewise Valor
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Ray of Dissolution
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+	self.controller.gain_life(3)
+
+
+##############################
+Lost in a Labyrinth
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-3, -0), self, self.game.eot_time)
+
+
+##############################
+Thassa's Bounty
+
+	Targets:
+			'player'
+
+	self.controller.draw(3)
+
+
+##############################
+Boon of Erebos
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 0), self, self.game.eot_time)
+
+
+##############################
+Lash of the Whip
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -4), self, self.game.eot_time)
+
+
+##############################
+Pharika's Cure
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+	self.controller.gain_life(2)
+
+
+##############################
+Sip of Hemlock
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Rage of Purphoros
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Spark Jolt
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Artisan's Sorrow
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Shredding Winds
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 7)
+
+
+##############################
+Serene Offering
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+
+
+##############################
+Shadow Rift
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Aftershock
+
+	Targets:
+			p.is_artifact
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Searing Touch
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 1)
+
+
+##############################
+Reality Anchor
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Verdigris
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Frantic Purification
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+
+
+##############################
+Unhinge
+
+	Targets:
+			'player'
+
+	self.controller.draw(1)
+
+
+##############################
+Waste Away
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-5, -5), self, self.game.eot_time)
+
+
+##############################
+Accelerate
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Kamahl's Sledge
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Sonic Seizure
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Sudden Death
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -4), self, self.game.eot_time)
+
+
+##############################
+Thrill of the Hunt
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 2), self, self.game.eot_time)
+
+
+##############################
+Strategy, Schmategy
+
+	targets[0].take_damage(self, 3)
+	self.game.apply_to_battlefield(
+		lambda p: p.destroy(),
+		lambda p: p.is_artifcat)
+
+##############################
+Iron Will
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (0, 4), self, self.game.eot_time)
+
+
+##############################
+Parch
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Blast from the Past
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Super-Duper Death Ray
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Saw in Half
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Spell Counter
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Deal Damage
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Face to Face
+
+	Targets:
+			'opponent'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Clear
+
+	Targets:
+			p.is_enchantment
+
+	targets[0].destroy()
+
+
+##############################
+Scrap
+
+	Targets:
+			p.is_artifact
+
+	targets[0].destroy()
+
+
+##############################
+Success!
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Very Cryptic Command
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+First Pick
+
+	Targets:
+			p.is_permanent and (p.is_artifact or p.is_enchantment)
+
+	targets[0].destroy()
+
+
+##############################
+Feral Instinct
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (1, 1), self, self.game.eot_time)
+
+
+##############################
+Disorder in the Court
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Ob Nixilis's Cruelty
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-5, -5), self, self.game.eot_time)
+
+
+##############################
+Bond of Passion
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Chandra's Triumph
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Jaya's Greeting
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Ral's Outburst
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Desperate Lunge
+
+	Targets:
+			'creature'
+
+	self.controller.gain_life(2)
+
+
+##############################
+Abjure
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Spinning Darkness
+
+	targets[0].take_damage(self, 3)
+	self.controller.gain_life(3)
+
+
+##############################
+Rest for the Weary
+
+	Targets:
+			'player'
+
+	self.gain_life(4)
+
+
+##############################
+Tomb Hex
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-2, -2), self, self.game.eot_time)
+
+
+##############################
+Bull Rush
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 0), self, self.game.eot_time)
+
+
+##############################
+Ritual of Rejuvenation
+
+	self.controller.draw(1)
+	self.controller.gain_life(4)
+
+
+##############################
+Vampire's Zeal
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Contract Killing
+
+	Targets:
+			'creature'
+
+	targets[0].destroy()
+
+
+##############################
+Dark Nourishment
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+	self.controller.gain_life(3)
+
+
+##############################
+Firecannon Blast
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Unfriendly Fire
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Verdant Rebirth
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Huatli's Spurring
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 0), self, self.game.eot_time)
+
+
+##############################
+Absorb Energy
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Kindred Denial
+
+	Targets:
+			'spell'
+
+	targets[0].counter(source=self)
+
+
+##############################
+Sap Vitality
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Brittle Blast
+
+	Targets:
+			p.is_opponent
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Electrostatic Blast
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Molten Impact
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Pass the Torch
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Magma Rift
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 5)
+
+
+##############################
+Resolute Strike
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (2, 2), self, self.game.eot_time)
+
+
+##############################
+Chilling Trap
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (-4, -0), self, self.game.eot_time)
+
+
+##############################
+Glacial Grasp
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+
+
+##############################
+Mind Drain
+
+	Targets:
+			'opponent'
+
+	self.controller.gain_life(1)
+
+
+##############################
+Inordinate Rage
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 2), self, self.game.eot_time)
+
+
+##############################
+Molten Blast
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].destroy()
+	targets[0].take_damage(self, 2)
+
+
+##############################
+Roil Eruption
+
+	Targets:
+			'creature or player'
+
+	targets[0].take_damage(self, 3)
+
+
+##############################
+Sizzling Barrage
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Synchronized Spellcraft
+
+	Targets:
+			'creature'
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Thundering Rebuke
+
+	Targets:
+			p.is_permanent and (p.is_creature or p.is_planeswalker)
+
+	targets[0].take_damage(self, 4)
+
+
+##############################
+Might of Murasa
+
+	Targets:
+			'creature'
+
+	targets[0].add_effect('modifyPT', (3, 3), self, self.game.eot_time)
+
+
+##############################
+Scale the Heights
+
+	Targets:
+			'creature'
+
+	self.controller.draw(1)
+	self.controller.gain_life(2)
+
+

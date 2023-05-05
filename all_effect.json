@@ -1,0 +1,7 @@
+{
+    "Destroy all enchantments" : "\tself.game.apply_to_battlefield(\n\t\tlambda p: p.destroy(),\n\t\tlambda p: p.is_enchantment)",
+    "Destroy all creatures" : "\tself.game.apply_to_battlefield(\n\t\tlambda p: p.destroy(),\n\t\tlambda p: p.is_creature)",
+    "Destroy all artifacts" : "\tself.game.apply_to_battlefield(\n\t\tlambda p: p.destroy(),\n\t\tlambda p: p.is_artifcat)",
+    "Destroy all lands" : "\tself.game.apply_to_battlefield(\n\t\tlambda p: p.destroy(),\n\t\tlambda p: p.is_land)"
+    
+}
